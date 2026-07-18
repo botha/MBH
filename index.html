@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MBH — Leadership Transition Playbook</title>
+<meta name="description" content="Felkészülés a szervezet teljes átvételére — Augusztus–December." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --mbh: #2f3c6c;
+    --mbh-deep: #243056;
+    --mbh-soft: #4a5a8a;
+    --mbh-mist: #e8ecf6;
+    --mbh-wash: #f3f5fb;
+    --sky: #dce5f7;
+    --ink: #1a2238;
+    --muted: #5c6780;
+    --faint: #8b95a8;
+    --line: rgba(47, 60, 108, 0.12);
+    --line-strong: rgba(47, 60, 108, 0.2);
+    --white: #ffffff;
+    --accent: #3d7cff;
+    --accent-soft: rgba(61, 124, 255, 0.12);
+    --ok: #1f8a5b;
+    --font: "Plus Jakarta Sans", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --max: 1120px;
+    --pad: clamp(1.25rem, 4vw, 3.5rem);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--white);
+    font-family: var(--font);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem var(--pad);
+    transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-solid {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+    box-shadow: 0 8px 30px rgba(47, 60, 108, 0.06);
+  }
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: var(--mbh);
+  }
+  .nav__mark {
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 0.45rem;
+    display: grid;
+    place-items: center;
+    background: var(--mbh);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .nav__links {
+    display: none;
+    gap: 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .nav__links a:hover { color: var(--mbh); }
+  @media (min-width: 900px) {
+    .nav__links { display: flex; }
+  }
+  .nav__meta {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    align-content: end;
+    padding: 7.5rem var(--pad) 4.5rem;
+    overflow: hidden;
+    background:
+      radial-gradient(70% 60% at 85% 15%, rgba(61, 124, 255, 0.16), transparent 55%),
+      radial-gradient(55% 45% at 10% 80%, rgba(47, 60, 108, 0.1), transparent 50%),
+      linear-gradient(165deg, #ffffff 0%, var(--mbh-wash) 45%, var(--sky) 100%);
+  }
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(47, 60, 108, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47, 60, 108, 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse at 70% 30%, #000 15%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero__orb {
+    position: absolute;
+    width: min(48vw, 480px);
+    height: min(48vw, 480px);
+    right: -4%;
+    top: 6%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(47, 60, 108, 0.18), rgba(61, 124, 255, 0.08) 45%, transparent 70%);
+    animation: float 16s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+  }
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mbh-soft);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(3.2rem, 10vw, 7rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    color: var(--mbh);
+  }
+  .hero h1 span {
+    display: block;
+    font-size: clamp(1.15rem, 2.8vw, 1.65rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-top: 1.1rem;
+    max-width: 22ch;
+  }
+  .hero__lede {
+    margin: 1.35rem 0 0;
+    max-width: 38ch;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2.1rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.85rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: transform 0.3s var(--ease), background 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--solid {
+    background: var(--mbh);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(47, 60, 108, 0.22);
+  }
+  .btn--solid:hover { background: var(--mbh-deep); }
+  .btn--ghost {
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.65);
+    color: var(--mbh);
+  }
+  .hero__scroll {
+    position: absolute;
+    right: var(--pad);
+    bottom: 1.75rem;
+    margin: 0;
+    z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  section { padding: clamp(4.25rem, 9vw, 7.5rem) var(--pad); }
+  .wrap { width: min(var(--max), 100%); margin: 0 auto; }
+
+  .section-label {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mbh-soft);
+  }
+  .section-title {
+    margin: 0;
+    font-size: clamp(1.9rem, 4.5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--mbh);
+    max-width: 18ch;
+  }
+  .section-title--wide { max-width: 24ch; }
+  .section-lead {
+    margin: 1rem 0 0;
+    max-width: 48ch;
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .purpose {
+    background: var(--white);
+  }
+  .purpose__grid {
+    display: grid;
+    gap: 2.75rem;
+    margin-top: 2.75rem;
+  }
+  @media (min-width: 900px) {
+    .purpose__grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: end;
+    }
+  }
+  .purpose__quote {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .purpose__quote span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+    max-width: 40ch;
+  }
+  .outcomes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .outcomes li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .outcomes__n {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    padding-top: 0.15rem;
+  }
+  .outcomes p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .streams {
+    background:
+      linear-gradient(180deg, var(--mbh-wash), var(--white) 30%, var(--mbh-wash));
+  }
+  .stream-rail {
+    margin-top: 2.75rem;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .stream {
+    display: grid;
+    gap: 1.1rem;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px rgba(47, 60, 108, 0.04);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
+  }
+  .stream:hover {
+    transform: translateY(-2px);
+    border-color: rgba(47, 60, 108, 0.22);
+    box-shadow: 0 16px 40px rgba(47, 60, 108, 0.08);
+  }
+  @media (min-width: 860px) {
+    .stream {
+      grid-template-columns: 4.5rem 1.15fr 1fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+  }
+  .stream__id {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.9rem;
+    display: grid;
+    place-items: center;
+    background: var(--mbh-mist);
+    color: var(--mbh);
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
+  .stream__name {
+    margin: 0 0 0.4rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--mbh);
+  }
+  .stream__goal {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--muted);
+    max-width: 38ch;
+  }
+  .stream__meta h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .stream__meta ul {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.3rem;
+  }
+  .stream__meta li {
+    position: relative;
+    padding-left: 0.85rem;
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+  .stream__meta li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .stream__out {
+    margin: 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--mbh-soft);
+  }
+
+  .phases {
+    background:
+      radial-gradient(50% 60% at 100% 0%, rgba(61, 124, 255, 0.1), transparent 50%),
+      var(--white);
+  }
+  .phase-journey {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1rem;
+    position: relative;
+  }
+  @media (min-width: 900px) {
+    .phase-journey {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+  }
+  .phase {
+    position: relative;
+    padding: 1.5rem 1.4rem 1.6rem;
+    border-radius: 1.35rem;
+    background: linear-gradient(180deg, var(--mbh-wash), var(--white));
+    border: 1px solid var(--line);
+    min-height: 100%;
+  }
+  .phase__when {
+    margin: 0 0 0.7rem;
+    display: inline-flex;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--mbh);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .phase h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--mbh);
+  }
+  .phase__q {
+    margin: 0 0 1.15rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .phase ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .phase li {
+    font-size: 0.94rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .phase li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .cadence { background: var(--mbh-wash); }
+  .habits {
+    margin-top: 2.75rem;
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) {
+    .habits { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1000px) {
+    .habits { grid-template-columns: repeat(3, 1fr); }
+  }
+  .habit {
+    padding: 1.35rem 1.3rem 1.45rem;
+    border-radius: 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    min-height: 10.5rem;
+    transition: transform 0.3s var(--ease), border-color 0.3s;
+  }
+  .habit:hover {
+    transform: translateY(-3px);
+    border-color: rgba(47, 60, 108, 0.24);
+  }
+  .habit__n {
+    display: inline-flex;
+    margin-bottom: 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .habit h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--mbh);
+  }
+  .habit p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .time { background: var(--white); }
+  .time__viz {
+    margin-top: 2.75rem;
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 900px) {
+    .time__viz {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+  .bars { display: grid; gap: 1.05rem; }
+  .bar { display: grid; gap: 0.4rem; }
+  .bar__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .bar__top span {
+    color: var(--mbh);
+    font-variant-numeric: tabular-nums;
+  }
+  .bar__track {
+    height: 0.55rem;
+    background: var(--mbh-mist);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .bar__fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--mbh), var(--accent));
+    transition: width 1.15s var(--ease);
+  }
+  .bar.is-in .bar__fill { width: var(--w); }
+  .time__note {
+    margin: 0;
+    padding: 1.6rem 1.5rem;
+    border-radius: 1.35rem;
+    background: var(--mbh);
+    color: #fff;
+    font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+  }
+  .time__note small {
+    display: block;
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: -0.01em;
+  }
+
+  .success {
+    background:
+      radial-gradient(60% 50% at 50% 100%, rgba(61, 124, 255, 0.1), transparent 55%),
+      linear-gradient(180deg, var(--mbh-wash), var(--white));
+    padding-bottom: clamp(4.5rem, 10vw, 7rem);
+  }
+  .checklist {
+    margin: 2.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.65rem;
+  }
+  .checklist li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1.05rem 1.15rem;
+    border-radius: 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    font-size: clamp(1rem, 1.8vw, 1.12rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .checklist__mark {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-top: 0.1rem;
+    border-radius: 50%;
+    background: rgba(31, 138, 91, 0.12);
+    color: var(--ok);
+    display: grid;
+    place-items: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+  .close {
+    margin-top: 3.25rem;
+    max-width: 28ch;
+  }
+  .close h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--mbh);
+  }
+  .close p {
+    margin: 0.85rem 0 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  footer {
+    padding: 1.35rem var(--pad) 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    background: var(--white);
+    color: var(--faint);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @keyframes float {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-2%, 3%, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .bar__fill, .hero__orb, .habit, .stream { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .bar__fill { width: var(--w); }
+  }
+</style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark">MBH</span>
+      Transition Playbook
+    </a>
+    <nav class="nav__links" aria-label="Szekciók">
+      <a href="#cel">Cél</a>
+      <a href="#streamek">Streamek</a>
+      <a href="#fazisok">Fázisok</a>
+      <a href="#ritmus">Ritmus</a>
+      <a href="#ido">Idő</a>
+      <a href="#siker">Siker</a>
+    </nav>
+    <p class="nav__meta">Aug — Dec</p>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__orb" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">Augusztus — December</p>
+        <h1>
+          MBH
+          <span>Leadership Transition Playbook</span>
+        </h1>
+        <p class="hero__lede">
+          Felkészülés a szervezet teljes átvételére — mély megismerés,
+          bizalomépítés, és egy január 1-jén induló működés tudatos előkészítése.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#cel">A keret megnyitása</a>
+          <a class="btn btn--ghost" href="#fazisok">Három fázis</a>
+        </div>
+      </div>
+      <p class="hero__scroll">Görgess tovább</p>
+    </section>
+
+    <section class="purpose" id="cel">
+      <div class="wrap">
+        <p class="section-label reveal">01 — Az anyag célja</p>
+        <h2 class="section-title section-title--wide reveal">
+          Nem gyors váltás. Tudatos indulás.
+        </h2>
+        <div class="purpose__grid">
+          <blockquote class="purpose__quote reveal">
+            Strukturált keret a vezetői átmenetre — hogy a január 1-jei átvétel
+            megalapozott ismeretekre, bizalomra és tudatos működési modellre épüljön.
+            <span>A cél a szervezet, az emberek és az üzleti működés mély megismerése.</span>
+          </blockquote>
+          <div class="reveal">
+            <p class="section-label" style="margin-bottom:1rem">December végére készen áll</p>
+            <ol class="outcomes">
+              <li><span class="outcomes__n">01</span><p>A szervezet működésének átfogó képe</p></li>
+              <li><span class="outcomes__n">02</span><p>Erős vezetői és stakeholder kapcsolatrendszer</p></li>
+              <li><span class="outcomes__n">03</span><p>A kulcsemberek objektív értékelése</p></li>
+              <li><span class="outcomes__n">04</span><p>Világos működési modell</p></li>
+              <li><span class="outcomes__n">05</span><p>A januári indulás részletes terve</p></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="streams" id="streamek">
+      <div class="wrap">
+        <p class="section-label reveal">02 — Fő streamek</p>
+        <h2 class="section-title reveal">Öt párhuzamos munkafolyamat</h2>
+        <p class="section-lead reveal">
+          A teljes átmenet öt streamben fut. Mindegyiknek van célja, ritmusa és
+          decemberi kimenete — együtt adják a teljes képet.
+        </p>
+
+        <div class="stream-rail">
+          <article class="stream reveal">
+            <div class="stream__id">01</div>
+            <div>
+              <h3 class="stream__name">Business &amp; Domain</h3>
+              <p class="stream__goal">Az üzleti területek, banki folyamatok és IT-környezet mély megismerése.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Business domainek megismerése</li>
+                <li>Core folyamatok áttekintése</li>
+                <li>IT alkalmazásportfólió megértése</li>
+                <li>Stratégiai kezdeményezések feltérképezése</li>
+              </ul>
+              <p class="stream__out">Kimenet · Átfogó domainismeret, fő problémák és lehetőségek</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">02</div>
+            <div>
+              <h3 class="stream__name">People &amp; Leadership</h3>
+              <p class="stream__goal">Vezetők, kulcsemberek és csapatok megismerése — erős vezetői csapat kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>1:1 beszélgetések</li>
+                <li>Kulcsemberek azonosítása</li>
+                <li>People review</li>
+                <li>Coaching szemléletű kapcsolatépítés</li>
+              </ul>
+              <p class="stream__out">Kimenet · People review, vezetői csapat, utánpótlás</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">03</div>
+            <div>
+              <h3 class="stream__name">Delivery &amp; Portfolio</h3>
+              <p class="stream__goal">A projektportfólió és a működési modell megértése.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Stratégiai projektek áttekintése</li>
+                <li>Delivery státuszok értékelése</li>
+                <li>Kockázatok feltárása</li>
+                <li>Prioritások felülvizsgálata</li>
+              </ul>
+              <p class="stream__out">Kimenet · Átlátható portfólió, delivery diagnózis</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">04</div>
+            <div>
+              <h3 class="stream__name">Organization &amp; Operating Model</h3>
+              <p class="stream__goal">A január 1-jétől működő szervezet és vezetési modell kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Szervezeti struktúra felülvizsgálata</li>
+                <li>Governance kialakítása</li>
+                <li>Döntési fórumok meghatározása</li>
+                <li>Felelősségi körök tisztázása</li>
+              </ul>
+              <p class="stream__out">Kimenet · Operating model, struktúra, governance</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">05</div>
+            <div>
+              <h3 class="stream__name">Communication &amp; Trust</h3>
+              <p class="stream__goal">Hitelesség, bizalom és transzparens kommunikáció kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Stakeholder egyeztetések</li>
+                <li>Rendszeres kommunikáció</li>
+                <li>Informális jelenlét</li>
+                <li>Vezetői láthatóság növelése</li>
+              </ul>
+              <p class="stream__out">Kimenet · Stakeholder háló, bizalom, egységes iránykép</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="phases" id="fazisok">
+      <div class="wrap">
+        <p class="section-label reveal">03 — A munka három fázisa</p>
+        <h2 class="section-title section-title--wide reveal">
+          Egy út. Három vezetői kérdés.
+        </h2>
+        <p class="section-lead reveal">
+          A fázisok nem projekt-kapuk — hanem a vezetői figyelem súlypontjai.
+        </p>
+
+        <div class="phase-journey">
+          <article class="phase reveal">
+            <p class="phase__when">Augusztus — Szeptember</p>
+            <h3>Megismerés</h3>
+            <p class="phase__q">„Mi történik ma valójában?”</p>
+            <ul>
+              <li>Megérteni a szervezet működését</li>
+              <li>Megismerni az embereket</li>
+              <li>Feltérképezni a projekteket</li>
+              <li>Bizalmat építeni</li>
+            </ul>
+          </article>
+          <article class="phase reveal">
+            <p class="phase__when">Október — November</p>
+            <h3>Kialakítás</h3>
+            <p class="phase__q">„Hogyan kellene működnünk?”</p>
+            <ul>
+              <li>Diagnózis alapján jövőkép</li>
+              <li>Operating model megtervezése</li>
+              <li>Vezetői csapat kialakítása</li>
+              <li>Prioritások meghatározása</li>
+            </ul>
+          </article>
+          <article class="phase reveal">
+            <p class="phase__when">December</p>
+            <h3>Felkészítés</h3>
+            <p class="phase__q">„Hogyan induljunk el január 1-jén?”</p>
+            <ul>
+              <li>Új működés véglegesítése</li>
+              <li>Kommunikáció</li>
+              <li>Szervezet felkészítése</li>
+              <li>Indulási terv véglegesítése</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cadence" id="ritmus">
+      <div class="wrap">
+        <p class="section-label reveal">04 — Folyamatos vezetői tevékenységek</p>
+        <h2 class="section-title section-title--wide reveal">
+          A ritmus, ami végigvisz.
+        </h2>
+        <p class="section-lead reveal">
+          Ezek nem egyszeri feladatok — a teljes átmeneti időszak állandó
+          vezetői gyakorlatai.
+        </p>
+
+        <div class="habits">
+          <article class="habit reveal">
+            <span class="habit__n">01</span>
+            <h3>1:1 beszélgetések</h3>
+            <p>Vezetők és kulcsemberek megismerése, bizalomépítés, coaching, rendszeres visszajelzés.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">02</span>
+            <h3>Management by Walking Around</h3>
+            <p>Informális jelenlét, kultúra megismerése, korai problémák érzékelése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">03</span>
+            <h3>Domain Deep Dive</h3>
+            <p>Egy-egy üzleti vagy IT terület mélyebb megértése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">04</span>
+            <h3>Projekt- és Portfólió Review</h3>
+            <p>Delivery státusz, kockázatok, prioritások és döntési pontok áttekintése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">05</span>
+            <h3>Stakeholder Management</h3>
+            <p>Kapcsolatépítés üzleti vezetőkkel, partnerterületekkel és felsővezetéssel.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">06</span>
+            <h3>Executive Journal</h3>
+            <p>Heti tanulságok, hipotézisek, nyitott kérdések és következő lépések rögzítése.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="time" id="ido">
+      <div class="wrap">
+        <p class="section-label reveal">05 — Heti időráfordítás</p>
+        <h2 class="section-title reveal">Irányadó súlypontok</h2>
+        <p class="section-lead reveal">
+          Nem merev kvóta — hanem a vezetői figyelem ajánlott eloszlása a
+          teljes időszakban.
+        </p>
+
+        <div class="time__viz">
+          <div class="bars reveal">
+            <div class="bar" style="--w: 35%">
+              <div class="bar__top"><strong>People &amp; Leadership</strong><span>35%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 25%">
+              <div class="bar__top"><strong>Business &amp; Domain</strong><span>25%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 15%">
+              <div class="bar__top"><strong>Delivery &amp; Portfolio</strong><span>15%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 15%">
+              <div class="bar__top"><strong>Stakeholder Management</strong><span>15%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 10%">
+              <div class="bar__top"><strong>Reflexió &amp; Journal</strong><span>10%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+          </div>
+          <p class="time__note reveal">
+            Az emberek és a domain kapják a legnagyobb figyelmet — mert ezek
+            alapozzák meg a januári döntéseket.
+            <small>1:1-ek, MBWA és csapatok · 35% · a többi stream erre épül.</small>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="success" id="siker">
+      <div class="wrap">
+        <p class="section-label reveal">06 — Sikerkritériumok</p>
+        <h2 class="section-title section-title--wide reveal">
+          December 31. — mit jelent a kész?
+        </h2>
+        <p class="section-lead reveal">
+          Az átmeneti időszak akkor sikeres, ha ezek mindegyike igaz.
+        </p>
+
+        <ul class="checklist">
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Ismerem a teljes vezetői csapatot és a kulcsembereket.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Megértettem a bank fő üzleti területeit és működését.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Áttekintettem minden stratégiai projektet.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Elkészült a people review és az utánpótlási kép.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Kialakult a január 1-jétől működő szervezeti modell.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>A szervezet érti a közös irányt és a vezetői elvárásokat.</li>
+          <li class="reveal"><span class="checklist__mark" aria-hidden="true">✓</span>Elkészült az első 90 nap részletes végrehajtási terve.</li>
+        </ul>
+
+        <div class="close reveal">
+          <h3>Január 1. nem a kezdet. A felkészülés eredménye.</h3>
+          <p>Ismeret. Bizalom. Működési modell. Indulási terv.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>MBH · Leadership Transition Playbook</span>
+    <span>Augusztus — December</span>
+  </footer>
+
+<script>
+(() => {
+  const nav = document.getElementById("nav");
+  const reveals = document.querySelectorAll(".reveal, .bar");
+
+  const onScroll = () => {
+    nav.classList.toggle("is-solid", window.scrollY > 24);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
+  );
+  reveals.forEach((el) => io.observe(el));
+})();
+</script>
+</body>
+</html>
