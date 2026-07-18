@@ -1,225 +1,1105 @@
 <!DOCTYPE html>
 <html lang="hu">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MBH — Transformation</title>
-    <meta
-      name="description"
-      content="MBH Bank: a hazai banktörténelem legnagyobb fúziója. Három bank, egy jövő."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Sora:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/src/styles.css" />
-  </head>
-  <body>
-    <div class="grain" aria-hidden="true"></div>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leadership Transition Playbook</title>
+<meta name="description" content="Felkészülés a szervezet teljes átvételére — Augusztus–December executive playbook." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-elevated: #12151a;
+    --ink: #f4f1ea;
+    --muted: rgba(244, 241, 234, 0.62);
+    --faint: rgba(244, 241, 234, 0.38);
+    --line: rgba(244, 241, 234, 0.10);
+    --line-strong: rgba(244, 241, 234, 0.18);
+    --accent: #d4b483;
+    --accent-soft: rgba(212, 180, 131, 0.16);
+    --blue: #7ea2c8;
+    --green: #8fbc9a;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --display: "Fraunces", Georgia, serif;
+    --sans: "Outfit", system-ui, sans-serif;
+    --max: 1120px;
+    --pad: clamp(1.25rem, 4vw, 3.5rem);
+  }
 
-    <header class="topbar">
-      <a class="brand-mark" href="#slide-1" aria-label="MBH kezdete">
-        <span class="brand-mark__word">MBH</span>
-      </a>
-      <nav class="progress" aria-label="Diák">
-        <button class="progress__dot is-active" data-goto="0" aria-label="1. dia"></button>
-        <button class="progress__dot" data-goto="1" aria-label="2. dia"></button>
-        <button class="progress__dot" data-goto="2" aria-label="3. dia"></button>
-        <button class="progress__dot" data-goto="3" aria-label="4. dia"></button>
-        <button class="progress__dot" data-goto="4" aria-label="5. dia"></button>
-        <button class="progress__dot" data-goto="5" aria-label="6. dia"></button>
-        <button class="progress__dot" data-goto="6" aria-label="7. dia"></button>
-      </nav>
-      <p class="topbar__meta"><span id="slide-index">01</span> / 07</p>
-    </header>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--bg);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-    <main id="deck" class="deck" tabindex="0">
-      <!-- 1. Hero -->
-      <section class="slide slide--hero is-active" id="slide-1" data-slide="0">
-        <div class="hero-plane" aria-hidden="true">
-          <div class="hero-plane__wash"></div>
-          <div class="hero-plane__grid"></div>
-          <div class="hero-plane__orb hero-plane__orb--a"></div>
-          <div class="hero-plane__orb hero-plane__orb--b"></div>
-        </div>
-        <div class="slide__inner slide__inner--hero">
-          <p class="brand-hero reveal" style="--d: 0ms">MBH</p>
-          <h1 class="headline reveal" style="--d: 120ms">
-            Három bank.<br />Egy jövő.
-          </h1>
-          <p class="lede reveal" style="--d: 240ms">
-            A hazai banktörténelem legnagyobb fúziója — és a második legnagyobb
-            magyar tulajdonú bank születése.
-          </p>
-          <div class="cta-row reveal" style="--d: 360ms">
-            <button class="btn btn--primary" data-goto="1">A történet</button>
-            <button class="btn btn--ghost" data-goto="3">Mérföldkövek</button>
-          </div>
-        </div>
-        <p class="hint reveal" style="--d: 520ms">
-          Görgess vagy nyomj <kbd>↓</kbd> / <kbd>→</kbd>
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    opacity: 0.045;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem var(--pad);
+    background: linear-gradient(to bottom, rgba(11,13,16,0.92), rgba(11,13,16,0));
+    backdrop-filter: blur(0px);
+    transition: background 0.4s var(--ease);
+  }
+  .nav.is-solid {
+    background: rgba(11,13,16,0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav__brand {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .nav__links {
+    display: none;
+    gap: 1.35rem;
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
+  .nav__links a { transition: color 0.25s; }
+  .nav__links a:hover { color: var(--ink); }
+  @media (min-width: 880px) {
+    .nav__links { display: flex; }
+  }
+  .nav__meta {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    align-content: end;
+    padding: 7rem var(--pad) 4.5rem;
+    overflow: hidden;
+  }
+  .hero__plane {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(70% 55% at 75% 20%, rgba(212,180,131,0.18), transparent 55%),
+      radial-gradient(50% 40% at 15% 80%, rgba(126,162,200,0.14), transparent 55%),
+      linear-gradient(165deg, #141820 0%, #0b0d10 55%, #090b0e 100%);
+  }
+  .hero__plane::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(244,241,234,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,241,234,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 60% 40%, #000 20%, transparent 70%);
+    opacity: 0.5;
+  }
+  .hero__orb {
+    position: absolute;
+    width: min(52vw, 520px);
+    height: min(52vw, 520px);
+    right: -6%;
+    top: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(244,241,234,0.12), transparent 62%);
+    filter: blur(2px);
+    animation: float 14s ease-in-out infinite alternate;
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .eyebrow {
+    margin: 0 0 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .hero h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(3rem, 9vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .hero__lede {
+    margin: 1.5rem 0 0;
+    max-width: 36ch;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.25rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.85rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: transform 0.3s var(--ease), background 0.3s, border-color 0.3s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--solid {
+    background: linear-gradient(135deg, #e4cda0, var(--accent));
+    color: #14110c;
+  }
+  .btn--ghost {
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+    background: rgba(244,241,234,0.03);
+  }
+  .hero__scroll {
+    position: absolute;
+    right: var(--pad);
+    bottom: 2rem;
+    z-index: 2;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  section {
+    position: relative;
+    padding: clamp(4.5rem, 10vw, 8rem) var(--pad);
+  }
+  .wrap { width: min(var(--max), 100%); margin: 0 auto; }
+
+  .section-label {
+    margin: 0 0 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-title {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 16ch;
+  }
+  .section-title--wide { max-width: 22ch; }
+  .section-lead {
+    margin: 1.15rem 0 0;
+    max-width: 48ch;
+    font-size: 1.08rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Purpose */
+  .purpose {
+    background:
+      radial-gradient(60% 50% at 0% 0%, rgba(126,162,200,0.08), transparent 55%),
+      var(--bg);
+  }
+  .purpose__grid {
+    display: grid;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  @media (min-width: 900px) {
+    .purpose__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: end;
+    }
+  }
+  .purpose__quote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--display);
+    font-size: clamp(1.55rem, 3.2vw, 2.15rem);
+    font-weight: 450;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .purpose__quote span {
+    display: block;
+    margin-top: 1rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .outcomes {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .outcomes li {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .outcomes {
+    margin: 0;
+    padding: 0;
+  }
+  .outcomes__n {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    color: var(--accent);
+    padding-top: 0.15rem;
+  }
+  .outcomes p {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 300;
+    color: rgba(244,241,234,0.88);
+  }
+
+  /* Streams */
+  .streams {
+    background:
+      linear-gradient(180deg, transparent, rgba(212,180,131,0.03) 40%, transparent),
+      var(--bg);
+  }
+  .stream-rail {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stream {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    background: var(--bg);
+    transition: background 0.35s var(--ease);
+  }
+  .stream:hover { background: #101318; }
+  @media (min-width: 820px) {
+    .stream {
+      grid-template-columns: 7rem 1.2fr 1fr;
+      align-items: start;
+      gap: 2rem;
+    }
+  }
+  .stream__id {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stream__name {
+    margin: 0 0 0.4rem;
+    font-family: var(--display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .stream__goal {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 36ch;
+  }
+  .stream__meta h4 {
+    margin: 0 0 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .stream__meta ul {
+    margin: 0 0 1.1rem;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .stream__meta li {
+    position: relative;
+    padding-left: 0.9rem;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: rgba(244,241,234,0.78);
+  }
+  .stream__meta li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.35rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .stream__out {
+    margin: 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: var(--blue);
+    font-weight: 400;
+  }
+
+  /* Phases */
+  .phases {
+    background:
+      radial-gradient(50% 40% at 100% 0%, rgba(212,180,131,0.1), transparent 50%),
+      var(--bg-elevated);
+  }
+  .phase-journey {
+    margin-top: 3.5rem;
+    display: grid;
+    gap: 0;
+    position: relative;
+  }
+  .phase-journey::before {
+    content: "";
+    position: absolute;
+    left: 1.1rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--line));
+  }
+  @media (min-width: 900px) {
+    .phase-journey {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .phase-journey::before {
+      left: 8%;
+      right: 8%;
+      top: 1.35rem;
+      bottom: auto;
+      height: 1px;
+      width: auto;
+      background: linear-gradient(to right, var(--accent), rgba(212,180,131,0.2));
+    }
+  }
+  .phase {
+    position: relative;
+    padding: 0 0 2.5rem 3.2rem;
+  }
+  @media (min-width: 900px) {
+    .phase { padding: 3rem 0 0; }
+  }
+  .phase__dot {
+    position: absolute;
+    left: 0.7rem;
+    top: 0.35rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(212,180,131,0.08);
+  }
+  @media (min-width: 900px) {
+    .phase__dot {
+      left: 0;
+      top: 1rem;
+    }
+  }
+  .phase__when {
+    margin: 0 0 0.65rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .phase h3 {
+    margin: 0 0 1rem;
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .phase__q {
+    margin: 0 0 1.25rem;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 450;
+    font-style: italic;
+    color: rgba(244,241,234,0.9);
+    line-height: 1.3;
+  }
+  .phase ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .phase li {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    padding-left: 0.95rem;
+    position: relative;
+  }
+  .phase li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--faint);
+    font-size: 0.8rem;
+  }
+
+  /* Cadence */
+  .cadence { background: var(--bg); }
+  .habits {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) {
+    .habits { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1000px) {
+    .habits { grid-template-columns: repeat(3, 1fr); }
+  }
+  .habit {
+    padding: 1.4rem 1.35rem 1.5rem;
+    border-top: 1px solid var(--line-strong);
+    background: linear-gradient(180deg, rgba(244,241,234,0.03), transparent 55%);
+    min-height: 11rem;
+    transition: transform 0.35s var(--ease), background 0.35s;
+  }
+  .habit:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(212,180,131,0.08), transparent 60%);
+  }
+  .habit__n {
+    display: block;
+    margin-bottom: 0.85rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: var(--faint);
+  }
+  .habit h3 {
+    margin: 0 0 0.55rem;
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .habit p {
+    margin: 0;
+    font-size: 0.94rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Time allocation */
+  .time {
+    background:
+      radial-gradient(40% 50% at 10% 50%, rgba(212,180,131,0.08), transparent 60%),
+      var(--bg);
+  }
+  .time__viz {
+    margin-top: 3rem;
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 900px) {
+    .time__viz {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+  }
+  .bars { display: grid; gap: 1.1rem; }
+  .bar { display: grid; gap: 0.4rem; }
+  .bar__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.92rem;
+  }
+  .bar__top strong { font-weight: 500; }
+  .bar__top span {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .bar__track {
+    height: 0.45rem;
+    background: rgba(244,241,234,0.06);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .bar__fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), #e8d2a8);
+    transition: width 1.2s var(--ease);
+  }
+  .bar.is-in .bar__fill { width: var(--w); }
+  .time__note {
+    margin: 0;
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 450;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+  }
+  .time__note small {
+    display: block;
+    margin-top: 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+
+  /* Success */
+  .success {
+    background:
+      radial-gradient(60% 50% at 50% 100%, rgba(212,180,131,0.12), transparent 55%),
+      linear-gradient(180deg, #101318, #0b0d10);
+    padding-bottom: clamp(5rem, 12vw, 8rem);
+  }
+  .checklist {
+    margin: 3rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .checklist li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .checklist__mark {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.15rem;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-size: 0.7rem;
+  }
+  .close {
+    margin-top: 4rem;
+    max-width: 28ch;
+  }
+  .close h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .close p {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-weight: 300;
+    font-size: 1.05rem;
+  }
+
+  footer {
+    padding: 1.5rem var(--pad) 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @keyframes float {
+    from { transform: translate3d(0,0,0) scale(1); }
+    to { transform: translate3d(-3%, 4%, 0) scale(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .bar__fill, .hero__orb, .habit { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .bar__fill { width: var(--w); }
+  }
+</style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">Transition Playbook</a>
+    <nav class="nav__links" aria-label="Szekciók">
+      <a href="#cel">Cél</a>
+      <a href="#streamek">Streamek</a>
+      <a href="#fazisok">Fázisok</a>
+      <a href="#ritmus">Ritmus</a>
+      <a href="#ido">Idő</a>
+      <a href="#siker">Siker</a>
+    </nav>
+    <p class="nav__meta">Aug — Dec</p>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__plane" aria-hidden="true"></div>
+      <div class="hero__orb" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">Augusztus — December</p>
+        <h1>Leadership<br />Transition<br />Playbook</h1>
+        <p class="hero__lede">
+          Felkészülés a szervezet teljes átvételére — mély megismerés,
+          bizalomépítés, és egy január 1-jén induló működés tudatos előkészítése.
         </p>
-      </section>
-
-      <!-- 2. Context -->
-      <section class="slide" id="slide-2" data-slide="1">
-        <div class="slide__inner">
-          <p class="eyebrow reveal">A kiindulópont</p>
-          <h2 class="title reveal" style="--d: 80ms">
-            Három erős szereplő,<br />széttagolt piac.
-          </h2>
-          <p class="body reveal" style="--d: 160ms">
-            Budapest Bank, MKB Bank és Takarékbank — mindegyik meghatározó
-            szereplő volt a saját szegmensében. A Magyar Bankholding célja:
-            egyetlen, országos lefedettségű univerzális bank felépítése.
-          </p>
-          <ul class="trio reveal" style="--d: 280ms">
-            <li>
-              <span class="trio__name">Budapest Bank</span>
-              <span class="trio__note">Lakossági és vállalati erő</span>
-            </li>
-            <li>
-              <span class="trio__name">MKB Bank</span>
-              <span class="trio__note">Tőzsdei jelenlét, vállalati fókusz</span>
-            </li>
-            <li>
-              <span class="trio__name">Takarékbank</span>
-              <span class="trio__note">Országos hálózat, agrárexpertise</span>
-            </li>
-          </ul>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#cel">A keret megnyitása</a>
+          <a class="btn btn--ghost" href="#fazisok">Három fázis</a>
         </div>
-      </section>
+      </div>
+      <p class="hero__scroll">Görgess tovább</p>
+    </section>
 
-      <!-- 3. Ambition -->
-      <section class="slide slide--dark" id="slide-3" data-slide="2">
-        <div class="slide__inner">
-          <p class="eyebrow reveal">A cél</p>
-          <h2 class="title title--xl reveal" style="--d: 80ms">
-            Európa egyik<br />leggyorsabb<br />hármas bankfúziója.
-          </h2>
-          <p class="body body--narrow reveal" style="--d: 200ms">
-            2020 decemberében indult a holding. Két év alatt — jogi, technológiai
-            és márkaarculati integrációval — megszületett az MBH Bank.
-          </p>
-        </div>
-      </section>
-
-      <!-- 4. Timeline -->
-      <section class="slide" id="slide-4" data-slide="3">
-        <div class="slide__inner">
-          <p class="eyebrow reveal">Mérföldkövek</p>
-          <h2 class="title reveal" style="--d: 80ms">Az út a fúzióig</h2>
-          <ol class="timeline reveal" style="--d: 180ms">
-            <li>
-              <time datetime="2020-12">2020. dec.</time>
-              <p>Magyar Bankholding működésének kezdete</p>
-            </li>
-            <li>
-              <time datetime="2022-03-31">2022. márc. 31.</time>
-              <p>Budapest Bank + MKB Bank jogi egyesülése</p>
-            </li>
-            <li>
-              <time datetime="2023-04-30">2023. ápr. 30.</time>
-              <p>Takarékbank beolvadása — technikai átállás egy hétvégén</p>
-            </li>
-            <li>
-              <time datetime="2023-05-01">2023. máj. 1.</time>
-              <p>MBH Bank indulása egységes márkanévvel és arculattal</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- 5. Scale -->
-      <section class="slide slide--scale" id="slide-5" data-slide="4">
-        <div class="slide__inner">
-          <p class="eyebrow reveal">Skála</p>
-          <h2 class="title reveal" style="--d: 80ms">Egy bank, országos súly.</h2>
-          <div class="stats reveal" style="--d: 200ms">
-            <article>
-              <p class="stats__value" data-count="2">2.</p>
-              <p class="stats__label">legnagyobb szereplő a hazai bankpiacon</p>
-            </article>
-            <article>
-              <p class="stats__value">~10e</p>
-              <p class="stats__label">kolléga a fúzió mögött</p>
-            </article>
-            <article>
-              <p class="stats__value">5000+</p>
-              <p class="stats__label">milliárd Ft bruttó hitelállomány*</p>
-            </article>
-            <article>
-              <p class="stats__value">1</p>
-              <p class="stats__label">egységes brand, országos hálózat</p>
-            </article>
-          </div>
-          <p class="footnote reveal" style="--d: 320ms">
-            *Nyilvános közlések alapján, a fúzió időpontjában.
-          </p>
-        </div>
-      </section>
-
-      <!-- 6. Brand & digital -->
-      <section class="slide" id="slide-6" data-slide="5">
-        <div class="slide__inner slide__inner--split">
-          <div>
-            <p class="eyebrow reveal">Új arculat</p>
-            <h2 class="title reveal" style="--d: 80ms">
-              Nem csak fúzió — új márka.
-            </h2>
-            <p class="body reveal" style="--d: 160ms">
-              Letisztult tipográfia, friss színvilág, egységes ügyfélélmény a
-              digitális csatornákon és a fiókhálózatban. A rebranding a
-              weboldallal, az appokkal és a fiókokkal kezdődött — ott, ahol az
-              ügyfél találkozik a bankkal.
-            </p>
-          </div>
-          <ul class="pillars reveal" style="--d: 260ms">
-            <li>
-              <strong>Digitális elsőbbség</strong>
-              <span>Netbank, mobilapp, videobank egy brand alatt</span>
-            </li>
-            <li>
-              <strong>Országos jelenlét</strong>
-              <span>Egységes fiókhálózat, tanácsadás-központú modell</span>
-            </li>
-            <li>
-              <strong>Piaci dinamika</strong>
-              <span>Erősebb verseny, szélesebb termékportfólió</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- 7. Close -->
-      <section class="slide slide--close" id="slide-7" data-slide="6">
-        <div class="hero-plane hero-plane--soft" aria-hidden="true">
-          <div class="hero-plane__wash"></div>
-          <div class="hero-plane__orb hero-plane__orb--c"></div>
-        </div>
-        <div class="slide__inner slide__inner--center">
-          <p class="brand-hero brand-hero--sm reveal">MBH</p>
-          <h2 class="title title--xl reveal" style="--d: 100ms">
-            A fúzió vége<br />egy új kezdet.
-          </h2>
-          <p class="lede lede--short reveal" style="--d: 220ms">
-            Stabil alapokon épülő, digitális, piacvezető bank — a magyar
-            gazdaság szolgálatában.
-          </p>
-          <div class="cta-row reveal" style="--d: 340ms">
-            <button class="btn btn--primary" data-goto="0">Újra az elejétől</button>
+    <section class="purpose" id="cel">
+      <div class="wrap">
+        <p class="section-label reveal">01 — Az anyag célja</p>
+        <h2 class="section-title section-title--wide reveal">
+          Nem gyors váltás. Tudatos indulás.
+        </h2>
+        <div class="purpose__grid">
+          <blockquote class="purpose__quote reveal">
+            Strukturált keret a vezetői átmenetre — hogy a január 1-jei átvétel
+            megalapozott ismeretekre, bizalomra és tudatos működési modellre épüljön.
+            <span>A cél a szervezet, az emberek és az üzleti működés mély megismerése.</span>
+          </blockquote>
+          <div class="reveal">
+            <p class="section-label" style="margin-bottom:1rem">December végére készen áll</p>
+            <ol class="outcomes">
+              <li>
+                <span class="outcomes__n">01</span>
+                <p>A szervezet működésének átfogó képe</p>
+              </li>
+              <li>
+                <span class="outcomes__n">02</span>
+                <p>Erős vezetői és stakeholder kapcsolatrendszer</p>
+              </li>
+              <li>
+                <span class="outcomes__n">03</span>
+                <p>A kulcsemberek objektív értékelése</p>
+              </li>
+              <li>
+                <span class="outcomes__n">04</span>
+                <p>Világos működési modell</p>
+              </li>
+              <li>
+                <span class="outcomes__n">05</span>
+                <p>A januári indulás részletes terve</p>
+              </li>
+            </ol>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <div class="nav-arrows" aria-hidden="false">
-      <button class="nav-arrows__btn" id="prev" aria-label="Előző dia">↑</button>
-      <button class="nav-arrows__btn" id="next" aria-label="Következő dia">↓</button>
-    </div>
+    <section class="streams" id="streamek">
+      <div class="wrap">
+        <p class="section-label reveal">02 — Fő streamek</p>
+        <h2 class="section-title reveal">Öt párhuzamos munkafolyamat</h2>
+        <p class="section-lead reveal">
+          A teljes átmenet öt streamben fut. Mindegyiknek van célja, ritmusa és
+          decemberi kimenete — együtt adják a teljes képet.
+        </p>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        <div class="stream-rail">
+          <article class="stream reveal">
+            <div class="stream__id">01</div>
+            <div>
+              <h3 class="stream__name">Business &amp; Domain</h3>
+              <p class="stream__goal">Az üzleti területek, banki folyamatok és IT-környezet mély megismerése.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Business domainek megismerése</li>
+                <li>Core folyamatok áttekintése</li>
+                <li>IT alkalmazásportfólió megértése</li>
+                <li>Stratégiai kezdeményezések feltérképezése</li>
+              </ul>
+              <p class="stream__out">Kimenet · Átfogó domainismeret, fő problémák és lehetőségek, üzleti működés megértése</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">02</div>
+            <div>
+              <h3 class="stream__name">People &amp; Leadership</h3>
+              <p class="stream__goal">Vezetők, kulcsemberek és csapatok megismerése — erős vezetői csapat kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>1:1 beszélgetések</li>
+                <li>Kulcsemberek azonosítása</li>
+                <li>People review</li>
+                <li>Coaching szemléletű kapcsolatépítés</li>
+              </ul>
+              <p class="stream__out">Kimenet · People review, vezetői csapat, kulcsemberek és utánpótlás</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">03</div>
+            <div>
+              <h3 class="stream__name">Delivery &amp; Portfolio</h3>
+              <p class="stream__goal">A projektportfólió és a működési modell megértése.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Stratégiai projektek áttekintése</li>
+                <li>Delivery státuszok értékelése</li>
+                <li>Kockázatok feltárása</li>
+                <li>Prioritások felülvizsgálata</li>
+              </ul>
+              <p class="stream__out">Kimenet · Átlátható portfólió, delivery diagnózis, prioritási javaslatok</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">04</div>
+            <div>
+              <h3 class="stream__name">Organization &amp; Operating Model</h3>
+              <p class="stream__goal">A január 1-jétől működő szervezet és vezetési modell kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Szervezeti struktúra felülvizsgálata</li>
+                <li>Governance kialakítása</li>
+                <li>Döntési fórumok meghatározása</li>
+                <li>Felelősségi körök tisztázása</li>
+              </ul>
+              <p class="stream__out">Kimenet · Új operating model, szervezeti felépítés, governance modell</p>
+            </div>
+          </article>
+
+          <article class="stream reveal">
+            <div class="stream__id">05</div>
+            <div>
+              <h3 class="stream__name">Communication &amp; Trust</h3>
+              <p class="stream__goal">Hitelesség, bizalom és transzparens kommunikáció kialakítása.</p>
+            </div>
+            <div class="stream__meta">
+              <h4>Tevékenységek</h4>
+              <ul>
+                <li>Stakeholder egyeztetések</li>
+                <li>Rendszeres kommunikáció</li>
+                <li>Informális jelenlét</li>
+                <li>Vezetői láthatóság növelése</li>
+              </ul>
+              <p class="stream__out">Kimenet · Erős stakeholder háló, magas vezetői bizalom, egységes iránykép</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="phases" id="fazisok">
+      <div class="wrap">
+        <p class="section-label reveal">03 — A munka három fázisa</p>
+        <h2 class="section-title section-title--wide reveal">
+          Egy út. Három vezetői kérdés.
+        </h2>
+        <p class="section-lead reveal">
+          A fázisok nem projekt-kapuk — hanem a vezetői figyelem súlypontjai.
+        </p>
+
+        <div class="phase-journey">
+          <article class="phase reveal">
+            <span class="phase__dot" aria-hidden="true"></span>
+            <p class="phase__when">Augusztus — Szeptember</p>
+            <h3>Megismerés</h3>
+            <p class="phase__q">„Mi történik ma valójában?”</p>
+            <ul>
+              <li>Megérteni a szervezet működését</li>
+              <li>Megismerni az embereket</li>
+              <li>Feltérképezni a projekteket</li>
+              <li>Bizalmat építeni</li>
+            </ul>
+          </article>
+
+          <article class="phase reveal">
+            <span class="phase__dot" aria-hidden="true"></span>
+            <p class="phase__when">Október — November</p>
+            <h3>Kialakítás</h3>
+            <p class="phase__q">„Hogyan kellene működnünk?”</p>
+            <ul>
+              <li>Diagnózis alapján jövőkép</li>
+              <li>Operating model megtervezése</li>
+              <li>Vezetői csapat kialakítása</li>
+              <li>Prioritások meghatározása</li>
+            </ul>
+          </article>
+
+          <article class="phase reveal">
+            <span class="phase__dot" aria-hidden="true"></span>
+            <p class="phase__when">December</p>
+            <h3>Felkészítés</h3>
+            <p class="phase__q">„Hogyan induljunk el január 1-jén?”</p>
+            <ul>
+              <li>Új működés véglegesítése</li>
+              <li>Kommunikáció</li>
+              <li>Szervezet felkészítése</li>
+              <li>Indulási terv véglegesítése</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cadence" id="ritmus">
+      <div class="wrap">
+        <p class="section-label reveal">04 — Folyamatos vezetői tevékenységek</p>
+        <h2 class="section-title section-title--wide reveal">
+          A ritmus, ami végigvisz.
+        </h2>
+        <p class="section-lead reveal">
+          Ezek nem egyszeri feladatok — a teljes átmeneti időszak állandó
+          vezetői gyakorlatai.
+        </p>
+
+        <div class="habits">
+          <article class="habit reveal">
+            <span class="habit__n">01</span>
+            <h3>1:1 beszélgetések</h3>
+            <p>Vezetők és kulcsemberek megismerése, bizalomépítés, coaching, rendszeres visszajelzés.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">02</span>
+            <h3>Management by Walking Around</h3>
+            <p>Informális jelenlét, kultúra megismerése, korai problémák érzékelése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">03</span>
+            <h3>Domain Deep Dive</h3>
+            <p>Egy-egy üzleti vagy IT terület mélyebb megértése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">04</span>
+            <h3>Projekt- és Portfólió Review</h3>
+            <p>Delivery státusz, kockázatok, prioritások és döntési pontok áttekintése.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">05</span>
+            <h3>Stakeholder Management</h3>
+            <p>Kapcsolatépítés üzleti vezetőkkel, partnerterületekkel és felsővezetéssel.</p>
+          </article>
+          <article class="habit reveal">
+            <span class="habit__n">06</span>
+            <h3>Executive Journal</h3>
+            <p>Heti tanulságok, hipotézisek, nyitott kérdések és következő lépések rögzítése.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="time" id="ido">
+      <div class="wrap">
+        <p class="section-label reveal">05 — Heti időráfordítás</p>
+        <h2 class="section-title reveal">Irányadó súlypontok</h2>
+        <p class="section-lead reveal">
+          Nem merev kvóta — hanem a vezetői figyelem ajánlott eloszlása a
+          teljes időszakban.
+        </p>
+
+        <div class="time__viz">
+          <div class="bars reveal">
+            <div class="bar" style="--w: 35%">
+              <div class="bar__top"><strong>People &amp; Leadership</strong><span>35%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 25%">
+              <div class="bar__top"><strong>Business &amp; Domain</strong><span>25%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 15%">
+              <div class="bar__top"><strong>Delivery &amp; Portfolio</strong><span>15%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 15%">
+              <div class="bar__top"><strong>Stakeholder Management</strong><span>15%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+            <div class="bar" style="--w: 10%">
+              <div class="bar__top"><strong>Reflexió &amp; Journal</strong><span>10%</span></div>
+              <div class="bar__track"><div class="bar__fill"></div></div>
+            </div>
+          </div>
+          <p class="time__note reveal">
+            Az emberek és a domain kapják a legnagyobb figyelmet — mert ezek
+            alapozzák meg a januári döntéseket.
+            <small>1:1-ek, MBWA és csapatok · 35% · a többi stream erre épül.</small>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="success" id="siker">
+      <div class="wrap">
+        <p class="section-label reveal">06 — Sikerkritériumok</p>
+        <h2 class="section-title section-title--wide reveal">
+          December 31. — mit jelent a kész?
+        </h2>
+        <p class="section-lead reveal">
+          Az átmeneti időszak akkor sikeres, ha ezek mindegyike igaz.
+        </p>
+
+        <ul class="checklist">
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Ismerem a teljes vezetői csapatot és a kulcsembereket.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Megértettem a bank fő üzleti területeit és működését.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Áttekintettem minden stratégiai projektet.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Elkészült a people review és az utánpótlási kép.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Kialakult a január 1-jétől működő szervezeti modell.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            A szervezet érti a közös irányt és a vezetői elvárásokat.
+          </li>
+          <li class="reveal">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            Elkészült az első 90 nap részletes végrehajtási terve.
+          </li>
+        </ul>
+
+        <div class="close reveal">
+          <h3>Január 1. nem a kezdet. A felkészülés eredménye.</h3>
+          <p>Ismeret. Bizalom. Működési modell. Indulási terv.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Leadership Transition Playbook</span>
+    <span>Augusztus — December</span>
+  </footer>
+
+<script>
+(() => {
+  const nav = document.getElementById("nav");
+  const reveals = document.querySelectorAll(".reveal, .bar");
+
+  const onScroll = () => {
+    nav.classList.toggle("is-solid", window.scrollY > 40);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+  );
+  reveals.forEach((el) => io.observe(el));
+})();
+</script>
+</body>
 </html>

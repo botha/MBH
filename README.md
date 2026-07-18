@@ -1,24 +1,15 @@
-# MBH — Transformation
+# Leadership Transition Playbook
 
-Fullscreen presentation landing page about the MBH Bank merger: three Hungarian banks becoming one.
+Premium, single-page executive playbook — self-contained `index.html`.
 
-## Run locally
+## Open
 
-```bash
-npm install
-npm run dev
-```
-
-## Build
+Open `index.html` in a browser, or serve locally:
 
 ```bash
-npm run build
-npm run preview
+npx --yes serve .
 ```
 
-## Controls
+## Contents
 
-- Arrow keys / Page Up·Down / Space
-- Mouse wheel
-- Touch swipe
-- Progress dots and on-screen arrows
+Felkészülés a szervezet teljes átvételére (Augusztus–December): cél, streamek, fázisok, vezetői ritmus, időeloszlás, sikerkritériumok.
