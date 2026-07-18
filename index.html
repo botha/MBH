@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MBH — Transformation</title>
+    <meta
+      name="description"
+      content="MBH Bank: a hazai banktörténelem legnagyobb fúziója. Három bank, egy jövő."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Sora:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand-mark" href="#slide-1" aria-label="MBH kezdete">
+        <span class="brand-mark__word">MBH</span>
+      </a>
+      <nav class="progress" aria-label="Diák">
+        <button class="progress__dot is-active" data-goto="0" aria-label="1. dia"></button>
+        <button class="progress__dot" data-goto="1" aria-label="2. dia"></button>
+        <button class="progress__dot" data-goto="2" aria-label="3. dia"></button>
+        <button class="progress__dot" data-goto="3" aria-label="4. dia"></button>
+        <button class="progress__dot" data-goto="4" aria-label="5. dia"></button>
+        <button class="progress__dot" data-goto="5" aria-label="6. dia"></button>
+        <button class="progress__dot" data-goto="6" aria-label="7. dia"></button>
+      </nav>
+      <p class="topbar__meta"><span id="slide-index">01</span> / 07</p>
+    </header>
+
+    <main id="deck" class="deck" tabindex="0">
+      <!-- 1. Hero -->
+      <section class="slide slide--hero is-active" id="slide-1" data-slide="0">
+        <div class="hero-plane" aria-hidden="true">
+          <div class="hero-plane__wash"></div>
+          <div class="hero-plane__grid"></div>
+          <div class="hero-plane__orb hero-plane__orb--a"></div>
+          <div class="hero-plane__orb hero-plane__orb--b"></div>
+        </div>
+        <div class="slide__inner slide__inner--hero">
+          <p class="brand-hero reveal" style="--d: 0ms">MBH</p>
+          <h1 class="headline reveal" style="--d: 120ms">
+            Három bank.<br />Egy jövő.
+          </h1>
+          <p class="lede reveal" style="--d: 240ms">
+            A hazai banktörténelem legnagyobb fúziója — és a második legnagyobb
+            magyar tulajdonú bank születése.
+          </p>
+          <div class="cta-row reveal" style="--d: 360ms">
+            <button class="btn btn--primary" data-goto="1">A történet</button>
+            <button class="btn btn--ghost" data-goto="3">Mérföldkövek</button>
+          </div>
+        </div>
+        <p class="hint reveal" style="--d: 520ms">
+          Görgess vagy nyomj <kbd>↓</kbd> / <kbd>→</kbd>
+        </p>
+      </section>
+
+      <!-- 2. Context -->
+      <section class="slide" id="slide-2" data-slide="1">
+        <div class="slide__inner">
+          <p class="eyebrow reveal">A kiindulópont</p>
+          <h2 class="title reveal" style="--d: 80ms">
+            Három erős szereplő,<br />széttagolt piac.
+          </h2>
+          <p class="body reveal" style="--d: 160ms">
+            Budapest Bank, MKB Bank és Takarékbank — mindegyik meghatározó
+            szereplő volt a saját szegmensében. A Magyar Bankholding célja:
+            egyetlen, országos lefedettségű univerzális bank felépítése.
+          </p>
+          <ul class="trio reveal" style="--d: 280ms">
+            <li>
+              <span class="trio__name">Budapest Bank</span>
+              <span class="trio__note">Lakossági és vállalati erő</span>
+            </li>
+            <li>
+              <span class="trio__name">MKB Bank</span>
+              <span class="trio__note">Tőzsdei jelenlét, vállalati fókusz</span>
+            </li>
+            <li>
+              <span class="trio__name">Takarékbank</span>
+              <span class="trio__note">Országos hálózat, agrárexpertise</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. Ambition -->
+      <section class="slide slide--dark" id="slide-3" data-slide="2">
+        <div class="slide__inner">
+          <p class="eyebrow reveal">A cél</p>
+          <h2 class="title title--xl reveal" style="--d: 80ms">
+            Európa egyik<br />leggyorsabb<br />hármas bankfúziója.
+          </h2>
+          <p class="body body--narrow reveal" style="--d: 200ms">
+            2020 decemberében indult a holding. Két év alatt — jogi, technológiai
+            és márkaarculati integrációval — megszületett az MBH Bank.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Timeline -->
+      <section class="slide" id="slide-4" data-slide="3">
+        <div class="slide__inner">
+          <p class="eyebrow reveal">Mérföldkövek</p>
+          <h2 class="title reveal" style="--d: 80ms">Az út a fúzióig</h2>
+          <ol class="timeline reveal" style="--d: 180ms">
+            <li>
+              <time datetime="2020-12">2020. dec.</time>
+              <p>Magyar Bankholding működésének kezdete</p>
+            </li>
+            <li>
+              <time datetime="2022-03-31">2022. márc. 31.</time>
+              <p>Budapest Bank + MKB Bank jogi egyesülése</p>
+            </li>
+            <li>
+              <time datetime="2023-04-30">2023. ápr. 30.</time>
+              <p>Takarékbank beolvadása — technikai átállás egy hétvégén</p>
+            </li>
+            <li>
+              <time datetime="2023-05-01">2023. máj. 1.</time>
+              <p>MBH Bank indulása egységes márkanévvel és arculattal</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 5. Scale -->
+      <section class="slide slide--scale" id="slide-5" data-slide="4">
+        <div class="slide__inner">
+          <p class="eyebrow reveal">Skála</p>
+          <h2 class="title reveal" style="--d: 80ms">Egy bank, országos súly.</h2>
+          <div class="stats reveal" style="--d: 200ms">
+            <article>
+              <p class="stats__value" data-count="2">2.</p>
+              <p class="stats__label">legnagyobb szereplő a hazai bankpiacon</p>
+            </article>
+            <article>
+              <p class="stats__value">~10e</p>
+              <p class="stats__label">kolléga a fúzió mögött</p>
+            </article>
+            <article>
+              <p class="stats__value">5000+</p>
+              <p class="stats__label">milliárd Ft bruttó hitelállomány*</p>
+            </article>
+            <article>
+              <p class="stats__value">1</p>
+              <p class="stats__label">egységes brand, országos hálózat</p>
+            </article>
+          </div>
+          <p class="footnote reveal" style="--d: 320ms">
+            *Nyilvános közlések alapján, a fúzió időpontjában.
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. Brand & digital -->
+      <section class="slide" id="slide-6" data-slide="5">
+        <div class="slide__inner slide__inner--split">
+          <div>
+            <p class="eyebrow reveal">Új arculat</p>
+            <h2 class="title reveal" style="--d: 80ms">
+              Nem csak fúzió — új márka.
+            </h2>
+            <p class="body reveal" style="--d: 160ms">
+              Letisztult tipográfia, friss színvilág, egységes ügyfélélmény a
+              digitális csatornákon és a fiókhálózatban. A rebranding a
+              weboldallal, az appokkal és a fiókokkal kezdődött — ott, ahol az
+              ügyfél találkozik a bankkal.
+            </p>
+          </div>
+          <ul class="pillars reveal" style="--d: 260ms">
+            <li>
+              <strong>Digitális elsőbbség</strong>
+              <span>Netbank, mobilapp, videobank egy brand alatt</span>
+            </li>
+            <li>
+              <strong>Országos jelenlét</strong>
+              <span>Egységes fiókhálózat, tanácsadás-központú modell</span>
+            </li>
+            <li>
+              <strong>Piaci dinamika</strong>
+              <span>Erősebb verseny, szélesebb termékportfólió</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7. Close -->
+      <section class="slide slide--close" id="slide-7" data-slide="6">
+        <div class="hero-plane hero-plane--soft" aria-hidden="true">
+          <div class="hero-plane__wash"></div>
+          <div class="hero-plane__orb hero-plane__orb--c"></div>
+        </div>
+        <div class="slide__inner slide__inner--center">
+          <p class="brand-hero brand-hero--sm reveal">MBH</p>
+          <h2 class="title title--xl reveal" style="--d: 100ms">
+            A fúzió vége<br />egy új kezdet.
+          </h2>
+          <p class="lede lede--short reveal" style="--d: 220ms">
+            Stabil alapokon épülő, digitális, piacvezető bank — a magyar
+            gazdaság szolgálatában.
+          </p>
+          <div class="cta-row reveal" style="--d: 340ms">
+            <button class="btn btn--primary" data-goto="0">Újra az elejétől</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="nav-arrows" aria-hidden="false">
+      <button class="nav-arrows__btn" id="prev" aria-label="Előző dia">↑</button>
+      <button class="nav-arrows__btn" id="next" aria-label="Következő dia">↓</button>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
