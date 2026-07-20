@@ -1,15 +1,11 @@
-# Leadership Transition Playbook
+# MBH — Executive Transition Framework
 
-Premium, single-page executive playbook — self-contained `index.html`.
+Premium single-page executive framework (`index.html`).
 
-## Open
+## Live
 
-Open `index.html` in a browser, or serve locally:
+https://botha.github.io/MBH/
 
-```bash
-npx --yes serve .
-```
+## Local
 
-## Contents
-
-Felkészülés a szervezet teljes átvételére (Augusztus–December): cél, streamek, fázisok, vezetői ritmus, időeloszlás, sikerkritériumok.
+Open `index.html` in a browser.
