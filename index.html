@@ -282,6 +282,7 @@
     padding: 1.45rem 1.4rem; border-radius: 1.25rem;
     border: 1px solid var(--line); background: var(--mbh-wash);
   }
+  .culture__card--wide { grid-column: 1 / -1; }
   .culture__card h3 {
     margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 800; color: var(--mbh);
   }
@@ -295,6 +296,58 @@
   .culture__triad li {
     padding: 0.9rem 1rem; border-radius: 0.9rem; background: var(--white);
     border: 1px solid var(--line); font-weight: 600; color: var(--mbh); font-size: 0.98rem;
+  }
+  .culture__values {
+    margin-top: 1rem;
+    padding: 1.5rem 1.35rem 1.6rem;
+    border-radius: 1.35rem;
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgba(61,124,255,0.22), transparent 55%),
+      linear-gradient(135deg, var(--mbh) 0%, var(--mbh-deep) 100%);
+    color: #fff;
+    grid-column: 1 / -1;
+  }
+  .culture__values h3 {
+    margin: 0 0 1.15rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+  }
+  .culture__values-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+  }
+  @media (min-width: 800px) {
+    .culture__values-list { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  }
+  .culture__values-list li {
+    padding: 1.15rem 1.1rem 1.2rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    min-height: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .culture__values-list strong {
+    display: block;
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+  .culture__values-list span {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.72);
   }
 
   .cadence { background: var(--mbh-wash); }
@@ -715,15 +768,16 @@
           Ahol a jó döntések természetesen születnek.
         </h2>
         <p class="section-lead reveal">
-          A cél egy olyan működési kultúra kialakítása, ahol a jó döntések természetesen születnek meg.
+          A cél egy olyan működési kultúra kialakítása, ahol a jó döntések természetesen születnek meg, és ahol a szervezet képes gyorsan tanulni, alkalmazkodni és fejlődni.
         </p>
         <div class="culture__grid">
-          <article class="culture__card reveal">
+          <article class="culture__card culture__card--wide reveal">
             <h3>Megközelítés</h3>
-            <p>Az első időszakban 8–10 olyan kollégát hozok magammal, akikkel korábban már bizonyítottan jól tudtunk együtt dolgozni.</p>
-            <p>Ők egy olyan szakmai magot alkotnak, amely új szemléletet és működési mintákat hoz a szervezetbe. Idővel ehhez a közösséghez természetesen csatlakoznak azok a kollégák is, akik azonosulnak ezzel a szemlélettel.</p>
-            <p>A cél nem egy párhuzamos szervezet létrehozása. A meglévő hierarchikus működés továbbra is biztosítja a napi működést, miközben közösen erősítjük a szervezet delivery- és üzemeltetési képességeit.</p>
+            <p>A változás kezdetben egy kis szakmai mag köré szerveződik. Ennek részeként az első időszakban 8–10 olyan kollégát hozok magammal, akikkel korábban már bizonyítottan jól tudtunk együtt dolgozni. Ők biztosítják a kezdeti lendületet, a közös szemléletet és azokat a működési mintákat, amelyekre a későbbiekben építeni tudunk.</p>
+            <p>A cél azonban nem egy állandó csapat kialakítása, hanem egy folyamatosan bővülő szakmai közösség létrehozása. Ehhez a közösséghez fokozatosan csatlakoznak azok a kollégák is, akik azonosulnak a működési elvekkel, szeretnének aktívan tenni a szervezet fejlődéséért, és vállalják, hogy saját területükön is továbbviszik ezt a szemléletet.</p>
+            <p>Ez a közösség nem helyettesíti a meglévő szervezeti struktúrát, és nem hoz létre párhuzamos hierarchiát. A napi működést továbbra is a meglévő vezetői rendszer biztosítja. A szakmai hálózat feladata ezzel párhuzamosan az, hogy összekapcsolja a különböző területeket, felgyorsítsa a tanulást, támogassa a változásokat, és segítsen abban, hogy a jól működő megoldások gyorsan elterjedjenek a szervezetben.</p>
           </article>
+
           <article class="culture__card reveal">
             <h3>A kezdeti csapat kompetenciái</h3>
             <ul class="culture__triad">
@@ -731,14 +785,27 @@
               <li>Technológiai és architekturális gondolkodás</li>
               <li>Módszertani, változásmenedzsment- és transzformációs tapasztalat</li>
             </ul>
-            <h3 style="margin-top:1.25rem">Közös értékek</h3>
-            <ul class="culture__triad">
-              <li>Bátorság</li>
-              <li>Egyszerűség (Simplicity)</li>
-              <li>Együttműködés</li>
+          </article>
+
+          <article class="culture__values reveal">
+            <h3>Közös értékek</h3>
+            <ul class="culture__values-list">
+              <li>
+                <strong>Bátorság</strong>
+                <span>Merjük felvállalni a változást</span>
+              </li>
+              <li>
+                <strong>Egyszerűség</strong>
+                <span>Simplicity — ahol lehet, egyszerűsíts</span>
+              </li>
+              <li>
+                <strong>Együttműködés</strong>
+                <span>Közösen, területeken átívelve</span>
+              </li>
             </ul>
           </article>
-          <article class="culture__card reveal" style="grid-column: 1 / -1">
+
+          <article class="culture__card culture__card--wide reveal">
             <h3>Alapelv</h3>
             <p>Hiszek abban, hogy egy jó munkahelyet három dolog határoz meg:</p>
             <ul class="culture__triad">
@@ -748,6 +815,7 @@
             </ul>
             <p style="margin-top:1rem">Ezért vezetőként is rendszeresen jelen kell lennünk a bankfiókokban, az operációban és minden olyan helyen, ahol az ügyfélélmény és az üzleti érték valójában létrejön.</p>
             <p>Minél rövidebb a visszacsatolási hurok az ügyfelek és a kollégák felé, annál jobb döntéseket tudunk hozni.</p>
+            <p>A szakmai közösség egyik legfontosabb feladata éppen ennek a tanulási ciklusnak a felgyorsítása: a tapasztalatok megosztása, az akadályok lebontása és annak elősegítése, hogy a jó megoldások minél gyorsabban váljanak a szervezet természetes működésének részévé.</p>
           </article>
         </div>
       </div>
