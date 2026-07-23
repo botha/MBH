@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MBH — Executive Transition Framework</title>
-<meta name="description" content="Strukturált vezetői megközelítés a szervezet átvételéhez — Augusztus–December." />
+<meta name="description" content="Executive Transition Framework — megértés, bizalom, quick winek és a jövőbeni működés megalapozása." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -30,7 +30,6 @@
     --max: 1120px;
     --pad: clamp(1.25rem, 4vw, 3.5rem);
   }
-
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -38,7 +37,6 @@
     color: var(--ink);
     background: var(--white);
     font-family: var(--font);
-    font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
@@ -47,636 +45,359 @@
   a { color: inherit; text-decoration: none; }
 
   .nav {
-    position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding: 0.95rem var(--pad);
-    transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
     border-bottom: 1px solid transparent;
+    transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
   }
   .nav.is-solid {
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255,255,255,0.88);
     backdrop-filter: blur(14px);
     border-bottom-color: var(--line);
-    box-shadow: 0 8px 30px rgba(47, 60, 108, 0.06);
+    box-shadow: 0 8px 30px rgba(47,60,108,0.06);
   }
   .nav__brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    font-weight: 800;
-    font-size: 1.05rem;
-    letter-spacing: 0.04em;
-    color: var(--mbh);
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--mbh);
   }
   .nav__mark {
-    width: 1.7rem;
-    height: 1.7rem;
-    border-radius: 0.45rem;
-    display: grid;
-    place-items: center;
-    background: var(--mbh);
-    color: #fff;
-    font-size: 0.62rem;
-    font-weight: 800;
+    width: 1.7rem; height: 1.7rem; border-radius: 0.45rem;
+    display: grid; place-items: center; background: var(--mbh); color: #fff;
+    font-size: 0.62rem; font-weight: 800;
   }
   .nav__links {
-    display: none;
-    gap: 1.1rem;
-    font-size: 0.84rem;
-    font-weight: 500;
-    color: var(--muted);
+    display: none; gap: 1rem; font-size: 0.82rem; font-weight: 500; color: var(--muted);
   }
   .nav__links a:hover { color: var(--mbh); }
-  @media (min-width: 980px) { .nav__links { display: flex; } }
+  @media (min-width: 1040px) { .nav__links { display: flex; } }
   .nav__meta {
-    margin: 0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--faint);
+    margin: 0; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
   }
 
   .hero {
-    position: relative;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: grid;
-    align-content: end;
-    padding: 7.5rem var(--pad) 4.5rem;
-    overflow: hidden;
+    position: relative; min-height: 100vh; min-height: 100dvh;
+    display: grid; align-content: end;
+    padding: 7.5rem var(--pad) 4.5rem; overflow: hidden;
     background:
-      radial-gradient(70% 60% at 85% 15%, rgba(61, 124, 255, 0.16), transparent 55%),
-      radial-gradient(55% 45% at 10% 80%, rgba(47, 60, 108, 0.1), transparent 50%),
-      linear-gradient(165deg, #ffffff 0%, var(--mbh-wash) 45%, var(--sky) 100%);
+      radial-gradient(70% 60% at 85% 15%, rgba(61,124,255,0.16), transparent 55%),
+      radial-gradient(55% 45% at 10% 80%, rgba(47,60,108,0.1), transparent 50%),
+      linear-gradient(165deg, #fff 0%, var(--mbh-wash) 45%, var(--sky) 100%);
   }
   .hero__grid {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(47, 60, 108, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(47, 60, 108, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(47,60,108,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47,60,108,0.05) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: radial-gradient(ellipse at 70% 30%, #000 15%, transparent 70%);
-    pointer-events: none;
   }
   .hero__orb {
-    position: absolute;
-    width: min(48vw, 480px);
-    height: min(48vw, 480px);
-    right: -4%;
-    top: 6%;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, rgba(47, 60, 108, 0.18), rgba(61, 124, 255, 0.08) 45%, transparent 70%);
+    position: absolute; width: min(48vw,480px); height: min(48vw,480px);
+    right: -4%; top: 6%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle at 40% 40%, rgba(47,60,108,0.18), rgba(61,124,255,0.08) 45%, transparent 70%);
     animation: float 16s ease-in-out infinite alternate;
-    pointer-events: none;
   }
-  .hero__content { position: relative; z-index: 2; max-width: 820px; }
+  .hero__content { position: relative; z-index: 2; max-width: 840px; }
   .eyebrow {
-    margin: 0 0 1rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mbh-soft);
+    margin: 0 0 1rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--mbh-soft);
   }
   .hero h1 {
-    margin: 0;
-    font-size: clamp(3.2rem, 10vw, 7rem);
-    font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -0.05em;
-    color: var(--mbh);
+    margin: 0; font-size: clamp(3.2rem, 10vw, 7rem); font-weight: 800;
+    line-height: 0.92; letter-spacing: -0.05em; color: var(--mbh);
   }
   .hero h1 span {
-    display: block;
-    font-size: clamp(1.15rem, 2.8vw, 1.65rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.25;
-    color: var(--ink);
-    margin-top: 1.1rem;
-    max-width: 24ch;
+    display: block; margin-top: 1.1rem; max-width: 26ch;
+    font-size: clamp(1.15rem, 2.8vw, 1.65rem); font-weight: 600;
+    letter-spacing: -0.03em; line-height: 1.25; color: var(--ink);
   }
   .hero__lede {
-    margin: 1.35rem 0 0;
-    max-width: 42ch;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    color: var(--muted);
-    line-height: 1.55;
+    margin: 1.35rem 0 0; max-width: 44ch;
+    font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--muted); line-height: 1.55;
   }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-top: 2.1rem;
-  }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2.1rem; }
   .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.85rem;
-    padding: 0.7rem 1.3rem;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 2.85rem; padding: 0.7rem 1.3rem; border-radius: 999px;
+    font-size: 0.92rem; font-weight: 600;
     transition: transform 0.3s var(--ease), background 0.3s, box-shadow 0.3s;
   }
   .btn:hover { transform: translateY(-2px); }
   .btn--solid {
-    background: var(--mbh);
-    color: #fff;
-    box-shadow: 0 12px 28px rgba(47, 60, 108, 0.22);
+    background: var(--mbh); color: #fff;
+    box-shadow: 0 12px 28px rgba(47,60,108,0.22);
   }
   .btn--solid:hover { background: var(--mbh-deep); }
   .btn--ghost {
     border: 1px solid var(--line-strong);
-    background: rgba(255, 255, 255, 0.65);
-    color: var(--mbh);
+    background: rgba(255,255,255,0.65); color: var(--mbh);
   }
   .hero__scroll {
-    position: absolute;
-    right: var(--pad);
-    bottom: 1.75rem;
-    margin: 0;
-    z-index: 2;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faint);
+    position: absolute; right: var(--pad); bottom: 1.75rem; z-index: 2; margin: 0;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--faint);
   }
 
   section { padding: clamp(4.25rem, 9vw, 7.5rem) var(--pad); }
   .wrap { width: min(var(--max), 100%); margin: 0 auto; }
   .section-label {
-    margin: 0 0 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--mbh-soft);
+    margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--mbh-soft);
   }
   .section-title {
-    margin: 0;
-    font-size: clamp(1.9rem, 4.5vw, 3.1rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    color: var(--mbh);
-    max-width: 20ch;
+    margin: 0; font-size: clamp(1.9rem, 4.5vw, 3.1rem); font-weight: 800;
+    line-height: 1.05; letter-spacing: -0.04em; color: var(--mbh); max-width: 22ch;
   }
-  .section-title--wide { max-width: 28ch; }
+  .section-title--wide { max-width: 30ch; }
   .section-lead {
-    margin: 1rem 0 0;
-    max-width: 52ch;
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.6;
+    margin: 1rem 0 0; max-width: 54ch; font-size: 1.05rem; color: var(--muted); line-height: 1.6;
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(18px);
+    opacity: 0; transform: translateY(18px);
     transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   }
   .reveal.is-in { opacity: 1; transform: none; }
 
   .purpose { background: var(--white); }
   .purpose__grid {
-    display: grid;
-    gap: 2.75rem;
-    margin-top: 2.75rem;
+    display: grid; gap: 1.25rem; margin-top: 2.5rem;
   }
-  @media (min-width: 900px) {
-    .purpose__grid {
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: start;
-    }
-  }
-  .purpose__quote {
-    margin: 0;
-    font-size: clamp(1.25rem, 2.6vw, 1.7rem);
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-  }
-  .purpose__quote span {
-    display: block;
-    margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--muted);
-    max-width: 44ch;
-  }
-  .focus-list, .outcomes {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--line);
-  }
-  .focus-list li, .outcomes li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.9rem;
-    align-items: start;
-    padding: 0.95rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .outcomes__n, .focus-list__n {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent);
-    padding-top: 0.15rem;
-  }
-  .focus-list p, .outcomes p {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .note {
-    margin: 2rem 0 0;
-    padding: 1.25rem 1.35rem;
-    border-radius: 1.1rem;
-    background: var(--mbh-wash);
+  .purpose__block {
+    padding: 1.4rem 1.35rem;
+    border-radius: 1.2rem;
     border: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 0.98rem;
-    line-height: 1.55;
+    background: var(--mbh-wash);
   }
+  .purpose__block p {
+    margin: 0; font-size: 1.05rem; color: var(--ink); line-height: 1.55; font-weight: 500;
+  }
+  .purpose__block p + p { margin-top: 0.9rem; color: var(--muted); font-weight: 400; }
 
   .principles { background: var(--mbh-wash); }
   .principle-grid {
-    margin-top: 2.5rem;
-    display: grid;
-    gap: 0.85rem;
+    margin-top: 2.5rem; display: grid; gap: 0.75rem;
     grid-template-columns: 1fr;
   }
   @media (min-width: 720px) { .principle-grid { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1000px) { .principle-grid { grid-template-columns: repeat(3, 1fr); } }
   .principle {
-    padding: 1.25rem 1.2rem;
-    border-radius: 1.1rem;
-    background: var(--white);
-    border: 1px solid var(--line);
-    min-height: 7.5rem;
+    padding: 1.15rem 1.15rem; border-radius: 1.05rem;
+    background: var(--white); border: 1px solid var(--line); min-height: 6.5rem;
   }
   .principle__n {
-    display: block;
-    margin-bottom: 0.65rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--accent);
+    display: block; margin-bottom: 0.55rem; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; color: var(--accent);
   }
   .principle p {
-    margin: 0;
-    font-size: 1.02rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--mbh);
-    line-height: 1.35;
+    margin: 0; font-size: 1rem; font-weight: 600; letter-spacing: -0.02em;
+    color: var(--mbh); line-height: 1.35;
   }
 
   .pillars { background: var(--white); }
-  .pillar-rail {
-    margin-top: 2.75rem;
-    display: grid;
-    gap: 0.9rem;
-  }
+  .pillar-rail { margin-top: 2.75rem; display: grid; gap: 0.9rem; }
   .pillar {
-    display: grid;
-    gap: 1.25rem;
-    padding: clamp(1.25rem, 2.5vw, 1.75rem);
-    background: var(--mbh-wash);
-    border: 1px solid var(--line);
-    border-radius: 1.25rem;
+    display: grid; gap: 1.15rem;
+    padding: clamp(1.25rem, 2.5vw, 1.7rem);
+    background: var(--mbh-wash); border: 1px solid var(--line); border-radius: 1.25rem;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 920px) {
     .pillar {
-      grid-template-columns: 4.5rem 1fr 1fr 1fr;
-      gap: 1.4rem;
-      align-items: start;
+      grid-template-columns: 4.2rem 1.15fr 1fr 1fr;
+      gap: 1.35rem; align-items: start;
     }
   }
   .pillar__id {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.9rem;
-    display: grid;
-    place-items: center;
-    background: var(--white);
-    color: var(--mbh);
-    font-size: 0.95rem;
-    font-weight: 800;
-    border: 1px solid var(--line);
+    width: 3rem; height: 3rem; border-radius: 0.9rem;
+    display: grid; place-items: center; background: var(--white);
+    color: var(--mbh); font-size: 0.95rem; font-weight: 800; border: 1px solid var(--line);
   }
   .pillar__name {
-    margin: 0 0 0.45rem;
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--mbh);
+    margin: 0 0 0.45rem; font-size: 1.22rem; font-weight: 800;
+    letter-spacing: -0.03em; color: var(--mbh);
   }
-  .pillar__goal {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
+  .pillar__goal { margin: 0; font-size: 0.95rem; color: var(--muted); line-height: 1.5; }
   .pillar__col h4 {
-    margin: 0 0 0.5rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faint);
+    margin: 0 0 0.5rem; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
   }
-  .pillar__col ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 0.35rem;
-  }
+  .pillar__col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
   .pillar__col li {
-    position: relative;
-    padding-left: 0.85rem;
-    font-size: 0.9rem;
-    color: var(--ink);
+    position: relative; padding-left: 0.85rem; font-size: 0.9rem; color: var(--ink);
   }
   .pillar__col li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 0.35rem;
-    height: 0.35rem;
-    border-radius: 50%;
-    background: var(--accent);
+    content: ""; position: absolute; left: 0; top: 0.55em;
+    width: 0.35rem; height: 0.35rem; border-radius: 50%; background: var(--accent);
   }
 
   .phases {
     background:
-      radial-gradient(50% 60% at 100% 0%, rgba(61, 124, 255, 0.1), transparent 50%),
+      radial-gradient(50% 60% at 100% 0%, rgba(61,124,255,0.1), transparent 50%),
       var(--mbh-wash);
   }
-  .phase-journey {
-    margin-top: 3rem;
-    display: grid;
-    gap: 1rem;
-  }
-  @media (min-width: 900px) {
-    .phase-journey { grid-template-columns: repeat(3, 1fr); }
-  }
+  .phase-journey { margin-top: 3rem; display: grid; gap: 1rem; }
+  @media (min-width: 900px) { .phase-journey { grid-template-columns: repeat(3, 1fr); } }
   .phase {
-    padding: 1.5rem 1.4rem 1.6rem;
-    border-radius: 1.35rem;
-    background: var(--white);
-    border: 1px solid var(--line);
+    padding: 1.5rem 1.35rem 1.55rem; border-radius: 1.35rem;
+    background: var(--white); border: 1px solid var(--line);
   }
   .phase__when {
-    margin: 0 0 0.7rem;
-    display: inline-flex;
-    padding: 0.3rem 0.65rem;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--mbh);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    margin: 0 0 0.7rem; display: inline-flex; padding: 0.3rem 0.65rem;
+    border-radius: 999px; background: var(--accent-soft); color: var(--mbh);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   }
   .phase h3 {
-    margin: 0 0 0.65rem;
-    font-size: 1.55rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--mbh);
+    margin: 0 0 0.55rem; font-size: 1.45rem; font-weight: 800;
+    letter-spacing: -0.03em; color: var(--mbh);
   }
-  .phase__q {
-    margin: 0 0 1.15rem;
-    font-size: 1.02rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.35;
+  .phase__goal {
+    margin: 0 0 1.1rem; font-size: 0.98rem; font-weight: 500; color: var(--ink); line-height: 1.4;
+  }
+  .phase h4 {
+    margin: 0 0 0.45rem; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
   }
   .phase ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 0.45rem;
+    margin: 0 0 1rem; padding: 0; list-style: none; display: grid; gap: 0.4rem;
   }
+  .phase ul:last-child { margin-bottom: 0; }
   .phase li {
-    font-size: 0.94rem;
-    color: var(--muted);
-    padding-left: 1rem;
-    position: relative;
+    font-size: 0.92rem; color: var(--muted); padding-left: 1rem; position: relative;
   }
   .phase li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 700;
+    content: "→"; position: absolute; left: 0; color: var(--accent);
+    font-size: 0.8rem; font-weight: 700;
   }
 
-  .cadence { background: var(--white); }
+  .culture { background: var(--white); }
+  .culture__grid {
+    margin-top: 2.5rem; display: grid; gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    .culture__grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+  }
+  .culture__card {
+    padding: 1.45rem 1.4rem; border-radius: 1.25rem;
+    border: 1px solid var(--line); background: var(--mbh-wash);
+  }
+  .culture__card h3 {
+    margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 800; color: var(--mbh);
+  }
+  .culture__card p {
+    margin: 0; font-size: 1rem; color: var(--muted); line-height: 1.55;
+  }
+  .culture__card p + p { margin-top: 0.85rem; }
+  .culture__triad {
+    margin: 1rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.65rem;
+  }
+  .culture__triad li {
+    padding: 0.9rem 1rem; border-radius: 0.9rem; background: var(--white);
+    border: 1px solid var(--line); font-weight: 600; color: var(--mbh); font-size: 0.98rem;
+  }
+
+  .cadence { background: var(--mbh-wash); }
   .habits {
-    margin-top: 2.75rem;
-    display: grid;
-    gap: 0.85rem;
+    margin-top: 2.5rem; display: grid; gap: 0.75rem;
     grid-template-columns: 1fr;
   }
   @media (min-width: 700px) { .habits { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .habits { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .habits { grid-template-columns: repeat(4, 1fr); } }
   .habit {
-    padding: 1.35rem 1.3rem 1.45rem;
-    border-radius: 1.2rem;
-    background: var(--mbh-wash);
-    border: 1px solid var(--line);
-    min-height: 8.5rem;
+    padding: 1.2rem 1.15rem; border-radius: 1.1rem;
+    background: var(--white); border: 1px solid var(--line); min-height: 7.2rem;
   }
   .habit__n {
-    display: inline-flex;
-    margin-bottom: 0.8rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--accent);
+    display: inline-flex; margin-bottom: 0.7rem; font-size: 0.72rem;
+    font-weight: 700; letter-spacing: 0.12em; color: var(--accent);
   }
   .habit h3 {
-    margin: 0;
-    font-size: 1.12rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--mbh);
+    margin: 0; font-size: 1.02rem; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--mbh); line-height: 1.3;
   }
 
-  .time { background: var(--mbh-wash); }
-  .time__viz {
-    margin-top: 2.75rem;
-    display: grid;
-    gap: 2rem;
-  }
+  .time { background: var(--white); }
+  .time__viz { margin-top: 2.75rem; display: grid; gap: 2rem; }
   @media (min-width: 900px) {
-    .time__viz {
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 3rem;
-    }
+    .time__viz { grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 3rem; }
   }
-  .bars { display: grid; gap: 1.05rem; }
+  .bars { display: grid; gap: 1rem; }
   .bar { display: grid; gap: 0.4rem; }
   .bar__top {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--ink);
+    display: flex; justify-content: space-between; gap: 1rem;
+    font-size: 0.9rem; font-weight: 600; color: var(--ink);
   }
-  .bar__top span {
-    color: var(--mbh);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
+  .bar__top span { color: var(--mbh); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .bar__track {
-    height: 0.55rem;
-    background: rgba(47, 60, 108, 0.1);
-    border-radius: 999px;
-    overflow: hidden;
+    height: 0.55rem; background: var(--mbh-mist); border-radius: 999px; overflow: hidden;
   }
   .bar__fill {
-    height: 100%;
-    width: 0;
-    border-radius: inherit;
+    height: 100%; width: 0; border-radius: inherit;
     background: linear-gradient(90deg, var(--mbh), var(--accent));
     transition: width 1.15s var(--ease);
   }
   .bar.is-in .bar__fill { width: var(--w); }
-  .bar__sub {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--faint);
-    font-weight: 400;
-  }
   .time__note {
-    margin: 0;
-    padding: 1.6rem 1.5rem;
-    border-radius: 1.35rem;
-    background: var(--mbh);
-    color: #fff;
-    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.03em;
+    margin: 0; padding: 1.6rem 1.5rem; border-radius: 1.35rem;
+    background: var(--mbh); color: #fff;
+    font-size: clamp(1.1rem, 2.1vw, 1.4rem); font-weight: 700;
+    line-height: 1.3; letter-spacing: -0.03em;
   }
   .time__note small {
-    display: block;
-    margin-top: 0.9rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.78);
+    display: block; margin-top: 0.9rem; font-size: 0.9rem; font-weight: 400;
+    color: rgba(255,255,255,0.78);
   }
 
-  .outcomes-section { background: var(--white); }
+  .outcomes-section { background: var(--mbh-wash); }
   .outcome-grid {
-    margin-top: 2.75rem;
-    display: grid;
-    gap: 0.85rem;
+    margin-top: 2.75rem; display: grid; gap: 0.85rem;
   }
   @media (min-width: 800px) { .outcome-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .outcome-grid { grid-template-columns: repeat(3, 1fr); } }
   .outcome {
-    padding: 1.35rem 1.3rem;
-    border-radius: 1.2rem;
-    border: 1px solid var(--line);
-    background: var(--mbh-wash);
+    padding: 1.3rem 1.25rem; border-radius: 1.15rem;
+    border: 1px solid var(--line); background: var(--white);
   }
   .outcome h3 {
-    margin: 0 0 0.75rem;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--mbh);
-    letter-spacing: -0.02em;
+    margin: 0 0 0.7rem; font-size: 1.02rem; font-weight: 800;
+    color: var(--mbh); letter-spacing: -0.02em;
   }
-  .outcome ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 0.4rem;
-  }
+  .outcome ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
   .outcome li {
-    position: relative;
-    padding-left: 0.9rem;
-    font-size: 0.92rem;
-    color: var(--ink);
+    position: relative; padding-left: 0.9rem; font-size: 0.92rem; color: var(--ink);
   }
   .outcome li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 0.35rem;
-    height: 0.35rem;
-    border-radius: 50%;
-    background: var(--ok);
+    content: ""; position: absolute; left: 0; top: 0.55em;
+    width: 0.35rem; height: 0.35rem; border-radius: 50%; background: var(--ok);
   }
 
   .success {
     background:
-      radial-gradient(60% 50% at 50% 100%, rgba(61, 124, 255, 0.1), transparent 55%),
-      linear-gradient(180deg, var(--mbh-wash), var(--white));
+      radial-gradient(60% 50% at 50% 100%, rgba(61,124,255,0.1), transparent 55%),
+      linear-gradient(180deg, var(--white), var(--mbh-wash));
     padding-bottom: clamp(4.5rem, 10vw, 7rem);
   }
-  .close {
-    margin-top: 1rem;
-    max-width: 36ch;
-  }
+  .close { max-width: 38ch; }
   .close h3 {
-    margin: 0;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
-    color: var(--mbh);
+    margin: 0; font-size: clamp(1.8rem, 4vw, 2.55rem); font-weight: 800;
+    letter-spacing: -0.04em; line-height: 1.1; color: var(--mbh);
   }
   .close p {
-    margin: 1rem 0 0;
-    color: var(--muted);
-    font-size: 1.05rem;
-    line-height: 1.55;
-    max-width: 42ch;
+    margin: 1rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55; max-width: 44ch;
   }
 
   footer {
     padding: 1.35rem var(--pad) 1.75rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    border-top: 1px solid var(--line);
-    background: var(--white);
-    color: var(--faint);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    border-top: 1px solid var(--line); background: var(--white);
+    color: var(--faint); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
 
   @keyframes float {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-2%, 3%, 0); }
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-2%,3%,0); }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -693,15 +414,15 @@
       Transition Framework
     </a>
     <nav class="nav__links" aria-label="Szekciók">
-      <a href="#cel">Cél</a>
+      <a href="#purpose">Purpose</a>
       <a href="#elvek">Elvek</a>
       <a href="#pillerek">Pillérek</a>
       <a href="#fazisok">Fázisok</a>
-      <a href="#ritmus">Ritmus</a>
-      <a href="#ido">Fókusz</a>
+      <a href="#kultura">Kultúra</a>
+      <a href="#ritmus">Fókusz</a>
       <a href="#eredmenyek">Eredmények</a>
     </nav>
-    <p class="nav__meta">Aug — Dec</p>
+    <p class="nav__meta">Aug — Jan</p>
   </header>
 
   <main id="top">
@@ -709,111 +430,97 @@
       <div class="hero__grid" aria-hidden="true"></div>
       <div class="hero__orb" aria-hidden="true"></div>
       <div class="hero__content reveal">
-        <p class="eyebrow">Augusztus — December</p>
+        <p class="eyebrow">Augusztus — Január</p>
         <h1>
           MBH
           <span>Executive Transition Framework</span>
         </h1>
         <p class="hero__lede">
-          Strukturált vezetői megközelítés a szervezet átvételéhez — mély megértés,
-          bizalomépítés, és a jövőbeni működési modell megalapozása.
+          Először megérteni a szervezetet, az embereket és az üzleti célokat —
+          majd 2–3 látható eredménnyel megalapozni a hosszabb távú átalakulást.
         </p>
         <div class="hero__cta">
-          <a class="btn btn--solid" href="#cel">A keret megnyitása</a>
-          <a class="btn btn--ghost" href="#pillerek">Öt stratégiai pillér</a>
+          <a class="btn btn--solid" href="#purpose">Purpose</a>
+          <a class="btn btn--ghost" href="#pillerek">Öt pillér</a>
         </div>
       </div>
       <p class="hero__scroll">Görgess tovább</p>
     </section>
 
-    <section class="purpose" id="cel">
+    <section class="purpose" id="purpose">
       <div class="wrap">
-        <p class="section-label reveal">01 — Cél</p>
+        <p class="section-label reveal">Purpose</p>
         <h2 class="section-title section-title--wide reveal">
-          Először megérteni. Aztán indítani.
+          Nem gyors változtatás. Mély megértés.
         </h2>
         <div class="purpose__grid">
-          <div>
-            <blockquote class="purpose__quote reveal">
-              Strukturált vezetői megközelítés a szervezet átvételéhez — mély megértés,
-              bizalom és a jövőbeni működési modell megalapozása.
-              <span>
-                Az első hónapok fókusza nem a gyors átalakítás, hanem annak megértése,
-                hogy mi működik jól, mit kell megőrizni, hol vannak a legnagyobb
-                fejlesztési lehetőségek, és hol lehet gyors, látható eredményt elérni.
-              </span>
-            </blockquote>
-            <p class="note reveal">
-              Az átmenet során kiemelt értéket jelent a külső szemlélet: egy hasonló
-              komplexitású szervezetből érkező vezető egyszerre ismeri fel a jól működő
-              gyakorlatokat és azokat a fejlesztési lehetőségeket, amelyek a mindennapi
-              működés során kevésbé láthatók.
-            </p>
-          </div>
-          <div class="reveal">
-            <p class="section-label" style="margin-bottom:1rem">Január 1-jére készen áll</p>
-            <ol class="outcomes">
-              <li><span class="outcomes__n">01</span><p>A szervezet működésének teljes képe</p></li>
-              <li><span class="outcomes__n">02</span><p>Erős vezetői és stakeholder kapcsolatrendszer</p></li>
-              <li><span class="outcomes__n">03</span><p>A kulcsemberek objektív értékelése</p></li>
-              <li><span class="outcomes__n">04</span><p>Közösen elfogadott működési modell</p></li>
-              <li><span class="outcomes__n">05</span><p>2–3 sikeresen megvalósított quick win</p></li>
-              <li><span class="outcomes__n">06</span><p>Az első 90 nap részletes végrehajtási terve</p></li>
-            </ol>
-          </div>
+          <article class="purpose__block reveal">
+            <p>Az első hónapok célja nem a gyors változtatás, hanem a szervezet mély megértése.</p>
+            <p>Meg szeretném ismerni az embereket, a működést, az üzleti célokat és a technológiai környezetet, hogy a későbbi döntések valós tapasztalatokra épüljenek.</p>
+          </article>
+          <article class="purpose__block reveal">
+            <p>Külső vezetőként előnyt jelent a friss szemlélet, ugyanakkor fontos megőrizni mindazt, ami jól működik.</p>
+            <p>A cél nem a változás önmagáért, hanem egy egyszerűbb, gyorsabb és üzletileg eredményesebb szervezet kialakítása.</p>
+          </article>
+          <article class="purpose__block reveal">
+            <p>Az első hónapokban 2–3 gyors, jól látható eredményt is szeretnék elérni, amelyek bizalmat építenek és megalapozzák a hosszabb távú átalakulást.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="principles" id="elvek">
       <div class="wrap">
-        <p class="section-label reveal">02 — Leadership Principles</p>
+        <p class="section-label reveal">Leadership Principles</p>
         <h2 class="section-title reveal">A vezetői iránytű</h2>
-        <p class="section-lead reveal">
-          Hat elv, amely végigviszi a teljes átmenetet — a megismeréstől a januári indulásig.
-        </p>
         <div class="principle-grid">
           <article class="principle reveal"><span class="principle__n">01</span><p>Először megérteni, utána változtatni.</p></article>
-          <article class="principle reveal"><span class="principle__n">02</span><p>Megőrizni azt, ami értéket teremt.</p></article>
-          <article class="principle reveal"><span class="principle__n">03</span><p>Egyszerűsíteni, ahol lehet.</p></article>
-          <article class="principle reveal"><span class="principle__n">04</span><p>Az üzleti érték vezesse a technológiai döntéseket.</p></article>
-          <article class="principle reveal"><span class="principle__n">05</span><p>Az emberek fontosabbak, mint a szervezeti ábra.</p></article>
-          <article class="principle reveal"><span class="principle__n">06</span><p>Kevés, de látható eredmény többet ér, mint sok párhuzamos kezdeményezés.</p></article>
+          <article class="principle reveal"><span class="principle__n">02</span><p>Menj ki a terepre.</p></article>
+          <article class="principle reveal"><span class="principle__n">03</span><p>Beszélj az emberekkel.</p></article>
+          <article class="principle reveal"><span class="principle__n">04</span><p>A döntéseket tényekre alapozd.</p></article>
+          <article class="principle reveal"><span class="principle__n">05</span><p>Amit lehet, egyszerűsíts.</p></article>
+          <article class="principle reveal"><span class="principle__n">06</span><p>Keveset változtass, de azt jól.</p></article>
+          <article class="principle reveal"><span class="principle__n">07</span><p>Gyors eredményekkel építs bizalmat.</p></article>
+          <article class="principle reveal"><span class="principle__n">08</span><p>Az üzleti érték fontosabb, mint a technológia.</p></article>
+          <article class="principle reveal"><span class="principle__n">09</span><p>Az AI nem cél, hanem eszköz.</p></article>
         </div>
       </div>
     </section>
 
     <section class="pillars" id="pillerek">
       <div class="wrap">
-        <p class="section-label reveal">03 — Stratégiai pillérek</p>
-        <h2 class="section-title reveal">Öt párhuzamos pillér</h2>
+        <p class="section-label reveal">Strategic Pillars</p>
+        <h2 class="section-title reveal">Öt stratégiai pillér</h2>
         <p class="section-lead reveal">
-          Minden pillérnek van célja, vezetői kérdései és decemberi deliverable-jei.
+          Ügyfél, ember, technológia, AI és IT economics — párhuzamosan, világos deliverable-ekkel.
         </p>
 
         <div class="pillar-rail">
           <article class="pillar reveal">
             <div class="pillar__id">01</div>
             <div>
-              <h3 class="pillar__name">Business &amp; Stakeholder Alignment</h3>
-              <p class="pillar__goal">Az üzleti stratégia, a stakeholder elvárások és a szervezeti prioritások teljes körű megértése.</p>
+              <h3 class="pillar__name">Customer, User &amp; Business Alignment</h3>
+              <p class="pillar__goal">A szervezetet nem csak az üzleti oldal felől akarom megérteni. Legalább ennyire fontos az ügyfelek és a banki munkatársak valós problémáinak, elvárásainak és napi működésének megértése. A fejlesztések kiindulópontja ne kizárólag az üzleti igény legyen, hanem a felhasználói problémák és lehetőségek feltárása.</p>
             </div>
             <div class="pillar__col">
-              <h4>Key Questions</h4>
+              <h4>Fókusz</h4>
               <ul>
-                <li>Mit várnak az üzleti területek az IT-tól?</li>
-                <li>Hol vannak a legnagyobb együttműködési kihívások?</li>
-                <li>Melyek a stratégiai prioritások?</li>
-                <li>Hol tud az IT a legnagyobb üzleti értéket teremteni?</li>
+                <li>Üzleti vezetőkkel való rendszeres egyeztetés</li>
+                <li>Bankfiókok rendszeres látogatása</li>
+                <li>Ügyintézők és front office kollégák munkájának megismerése</li>
+                <li>Call center működésének megismerése</li>
+                <li>Digitális csatornák kipróbálása ügyfélként</li>
+                <li>Ügyfél- és munkatársi visszajelzések gyűjtése</li>
+                <li>Customer journey-k és pain pointok azonosítása</li>
               </ul>
             </div>
             <div class="pillar__col">
               <h4>Deliverables</h4>
               <ul>
-                <li>Stakeholder térkép</li>
-                <li>Üzleti prioritási térkép</li>
-                <li>Business–IT együttműködési diagnózis</li>
-                <li>Stratégiai alignment javaslat</li>
+                <li>Stakeholder Map</li>
+                <li>Customer &amp; User Insight</li>
+                <li>Business–IT Alignment</li>
+                <li>Prioritási térkép üzleti és felhasználói érték alapján</li>
               </ul>
             </div>
           </article>
@@ -822,24 +529,26 @@
             <div class="pillar__id">02</div>
             <div>
               <h3 class="pillar__name">People &amp; Leadership</h3>
-              <p class="pillar__goal">A vezetői csapat, a szervezeti kultúra és a kulcsemberek megismerése — magas teljesítményű vezetői működés.</p>
+              <p class="pillar__goal">Erős, felhatalmazott vezetői csapat kialakítása, amely gyors döntésekre, együttműködésre és magas felelősségvállalásra épül.</p>
             </div>
             <div class="pillar__col">
-              <h4>Key Questions</h4>
+              <h4>Fókusz</h4>
               <ul>
-                <li>Kik a szervezet kulcsszereplői?</li>
-                <li>Hol vannak vezetői erősségek és fejlesztendő területek?</li>
-                <li>Kik jelentik a legnagyobb megtartási kockázatot?</li>
-                <li>Hogyan működik ma a vezetői együttműködés?</li>
+                <li>Vezetői 1:1-ek</li>
+                <li>Kulcsemberek megismerése</li>
+                <li>Kompetenciák és motiváció feltérképezése</li>
+                <li>Szervezeti erősségek és hiányok azonosítása</li>
+                <li>Delegálási és döntési szintek tisztázása</li>
+                <li>Teljesítmény- és vezetői kultúra erősítése</li>
               </ul>
             </div>
             <div class="pillar__col">
               <h4>Deliverables</h4>
               <ul>
-                <li>People Review</li>
                 <li>Leadership Assessment</li>
-                <li>Kulcsemberek és utánpótlási terv</li>
-                <li>Leadership Team Development Plan</li>
+                <li>Talent Map</li>
+                <li>Szervezeti fejlesztési javaslat</li>
+                <li>Leadership Operating Model</li>
               </ul>
             </div>
           </article>
@@ -848,24 +557,26 @@
             <div class="pillar__id">03</div>
             <div>
               <h3 class="pillar__name">Delivery, Architecture &amp; Technology</h3>
-              <p class="pillar__goal">A projektportfólió, az architektúra és a technológiai környezet objektív értékelése.</p>
+              <p class="pillar__goal">Átlátható, kiszámítható és üzletileg fókuszált IT működés kialakítása.</p>
             </div>
             <div class="pillar__col">
-              <h4>Key Questions</h4>
+              <h4>Fókusz</h4>
               <ul>
-                <li>Mely projektek kritikusak?</li>
-                <li>Milyen állapotban van az architektúra?</li>
-                <li>Hol vannak a legnagyobb technológiai kockázatok?</li>
-                <li>Mely területeken szükséges egyszerűsítés?</li>
+                <li>Projektportfólió áttekintése</li>
+                <li>Delivery folyamatok felmérése</li>
+                <li>Enterprise architektúra megértése</li>
+                <li>Technológiai adósság feltérképezése</li>
+                <li>Kritikus rendszerek és függőségek azonosítása</li>
+                <li>Egyszerűsítési lehetőségek keresése</li>
               </ul>
             </div>
             <div class="pillar__col">
               <h4>Deliverables</h4>
               <ul>
-                <li>Delivery Assessment</li>
-                <li>Architecture Assessment</li>
-                <li>Technology Risk Assessment</li>
-                <li>Technológiai prioritási lista</li>
+                <li>Portfolio Assessment</li>
+                <li>Architecture Overview</li>
+                <li>Technology Debt Assessment</li>
+                <li>Delivery Improvement Roadmap</li>
               </ul>
             </div>
           </article>
@@ -874,24 +585,26 @@
             <div class="pillar__id">04</div>
             <div>
               <h3 class="pillar__name">Data &amp; AI Transformation</h3>
-              <p class="pillar__goal">Az adatvezérelt működés és AI képességek felmérése — a jövőbeni transzformáció megalapozása.</p>
+              <p class="pillar__goal">A data és az AI üzleti értékké alakítása.</p>
             </div>
             <div class="pillar__col">
-              <h4>Key Questions</h4>
+              <h4>Fókusz</h4>
               <ul>
-                <li>Mennyire adatvezérelt jelenleg a szervezet?</li>
-                <li>Hol teremthet valódi üzleti értéket az AI?</li>
-                <li>Mely AI use case-ek indíthatók el rövid távon?</li>
-                <li>Milyen Data &amp; AI képességek hiányoznak?</li>
+                <li>AI kezdeményezések áttekintése</li>
+                <li>Data platformok felmérése</li>
+                <li>Adatminőség értékelése</li>
+                <li>AI use case-ek priorizálása</li>
+                <li>Gyors AI pilotok indítása</li>
+                <li>AI governance kialakítása</li>
               </ul>
             </div>
             <div class="pillar__col">
               <h4>Deliverables</h4>
               <ul>
-                <li>Data &amp; AI Capability Assessment</li>
-                <li>AI Use Case Portfolio</li>
-                <li>Data &amp; AI Roadmap</li>
-                <li>AI prioritási javaslat</li>
+                <li>AI Opportunity Map</li>
+                <li>Data Maturity Assessment</li>
+                <li>AI Roadmap</li>
+                <li>Pilot Portfolio</li>
               </ul>
             </div>
           </article>
@@ -900,24 +613,26 @@
             <div class="pillar__id">05</div>
             <div>
               <h3 class="pillar__name">IT Economics &amp; Strategic Sourcing</h3>
-              <p class="pillar__goal">Az IT gazdasági működésének, beszállítói ökoszisztémájának és beruházási struktúrájának megértése.</p>
+              <p class="pillar__goal">Az IT befektetések üzleti értékének növelése és a beszállítói működés optimalizálása.</p>
             </div>
             <div class="pillar__col">
-              <h4>Key Questions</h4>
+              <h4>Fókusz</h4>
               <ul>
-                <li>Mire költünk?</li>
-                <li>Hol vannak optimalizálási lehetőségek?</li>
-                <li>Mely beszállítók stratégiai jelentőségűek?</li>
-                <li>Milyen sourcing modell támogatja legjobban a jövőbeni működést?</li>
+                <li>IT költségstruktúra áttekintése</li>
+                <li>Vendor portfólió felmérése</li>
+                <li>Szerződések áttekintése</li>
+                <li>Make-or-buy döntések felülvizsgálata</li>
+                <li>Outsourcing stratégia értékelése</li>
+                <li>Hatékonysági lehetőségek keresése</li>
               </ul>
             </div>
             <div class="pillar__col">
               <h4>Deliverables</h4>
               <ul>
-                <li>IT Economics Assessment</li>
+                <li>IT Cost Baseline</li>
                 <li>Vendor Assessment</li>
-                <li>Sourcing Strategy</li>
-                <li>Optimalizálási opportunity backlog</li>
+                <li>Strategic Sourcing Roadmap</li>
+                <li>Savings &amp; Optimization Opportunities</li>
               </ul>
             </div>
           </article>
@@ -927,44 +642,96 @@
 
     <section class="phases" id="fazisok">
       <div class="wrap">
-        <p class="section-label reveal">04 — Három fázis</p>
-        <h2 class="section-title section-title--wide reveal">
-          Egy út. Három vezetői szakasz.
-        </h2>
+        <p class="section-label reveal">Executive Transition Phases</p>
+        <h2 class="section-title section-title--wide reveal">Három fázis a teljes átvételig</h2>
         <div class="phase-journey">
           <article class="phase reveal">
             <p class="phase__when">Augusztus — Szeptember</p>
-            <h3>Megismerés</h3>
-            <p class="phase__q">Először megérteni, utána változtatni.</p>
+            <h3>Phase 1 — Megismerés</h3>
+            <p class="phase__goal">Megérteni a szervezet működését, az embereket, az üzleti célokat és a technológiai környezetet.</p>
+            <h4>Fókusz</h4>
             <ul>
-              <li>Kapcsolatok építése</li>
-              <li>Információgyűjtés</li>
-              <li>A működés megértése</li>
-              <li>Bizalomépítés</li>
+              <li>Vezetői és stakeholder interjúk</li>
+              <li>Bankfiókok és operáció megismerése</li>
+              <li>Portfólió és szervezeti működés áttekintése</li>
+              <li>Kulcskockázatok és gyors lehetőségek azonosítása</li>
               <li>2–3 gyors eredmény megvalósítása</li>
             </ul>
+            <h4>Kimenetek</h4>
+            <ul>
+              <li>Executive Assessment</li>
+              <li>Quick Win lista</li>
+              <li>Prioritások azonosítása</li>
+            </ul>
           </article>
+
           <article class="phase reveal">
             <p class="phase__when">Október — November</p>
-            <h3>Kialakítás</h3>
-            <p class="phase__q">A jövő működési modelljének megtervezése.</p>
+            <h3>Phase 2 — Kialakítás</h3>
+            <p class="phase__goal">Közös működési modell és jövőkép kialakítása.</p>
+            <h4>Fókusz</h4>
             <ul>
-              <li>Diagnózis</li>
-              <li>Stratégiai irányok</li>
-              <li>Operating Model</li>
-              <li>Vezetői csapat</li>
+              <li>Vezetői működés finomhangolása</li>
+              <li>Szervezeti fejlesztések előkészítése</li>
+              <li>AI és technológiai roadmap kialakítása</li>
+              <li>Delivery fejlesztések indítása</li>
+              <li>Prioritások véglegesítése</li>
+            </ul>
+            <h4>Kimenetek</h4>
+            <ul>
+              <li>Target Operating Model</li>
+              <li>Prioritized Transformation Roadmap</li>
+              <li>Leadership Alignment</li>
             </ul>
           </article>
+
           <article class="phase reveal">
-            <p class="phase__when">December</p>
-            <h3>Felkészítés</h3>
-            <p class="phase__q">A sikeres indulás feltételeinek biztosítása.</p>
+            <p class="phase__when">December — Január</p>
+            <h3>Phase 3 — Stabilizálás és skálázás</h3>
+            <p class="phase__goal">A működés stabilizálása és felkészülés a teljes terület átvételére.</p>
+            <h4>Fókusz</h4>
             <ul>
-              <li>Kommunikáció</li>
-              <li>Governance</li>
-              <li>Operating Model véglegesítése</li>
-              <li>Az első 90 nap végrehajtási terve</li>
+              <li>Új működési modell bevezetése</li>
+              <li>Csapat bővítése</li>
+              <li>Vezetői felelősségek véglegesítése</li>
+              <li>AI és transzformációs programok skálázása</li>
+              <li>2027-es prioritások meghatározása</li>
             </ul>
+            <h4>Kimenetek</h4>
+            <ul>
+              <li>Stabil vezetői működés</li>
+              <li>Egységes szervezet</li>
+              <li>2027 Execution Plan</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="culture" id="kultura">
+      <div class="wrap">
+        <p class="section-label reveal">Csapat és működési kultúra</p>
+        <h2 class="section-title section-title--wide reveal">
+          Ahol a jó döntések természetesen születnek.
+        </h2>
+        <p class="section-lead reveal">
+          Egy vezető legfontosabb feladata nem egy szervezet irányítása, hanem egy olyan működési kultúra kialakítása, ahol a jó döntések természetes módon születnek meg. Ennek alapja a bizalom, az együttműködés és a gyors visszacsatolás.
+        </p>
+        <div class="culture__grid">
+          <article class="culture__card reveal">
+            <h3>Megközelítés</h3>
+            <p>Az első időszakban 8–10 olyan kollégát hozok magammal, akikkel korábban már bizonyítottan jól tudtunk együtt dolgozni.</p>
+            <p>A cél nem egy külön csapat létrehozása, hanem egy erős vezetői mag kialakítása, amely képes felgyorsítani a változásokat, tudást átadni és példát mutatni. A következő időszakban ezt a kört fokozatosan tovább szeretném bővíteni.</p>
+          </article>
+          <article class="culture__card reveal">
+            <h3>Alapelvek</h3>
+            <p>Hiszek abban, hogy egy jó munkahelyet három dolog határoz meg:</p>
+            <ul class="culture__triad">
+              <li>Jó vezetőd van.</li>
+              <li>Jó csapatban dolgozol.</li>
+              <li>Közel vagy azokhoz, akiknek a problémáit megoldod.</li>
+            </ul>
+            <p style="margin-top:1rem">Ezért fontos, hogy vezetőként rendszeresen jelen legyünk a bankfiókokban, beszéljünk az ügyfelekkel, leüljünk az ügyintézők mellé, és saját szemünkkel lássuk a napi működést. Minél rövidebb a visszacsatolási hurok, annál jobb döntéseket tudunk hozni.</p>
           </article>
         </div>
       </div>
@@ -972,62 +739,54 @@
 
     <section class="cadence" id="ritmus">
       <div class="wrap">
-        <p class="section-label reveal">05 — Folyamatos vezetői tevékenységek</p>
-        <h2 class="section-title section-title--wide reveal">A ritmus, ami végigvisz.</h2>
+        <p class="section-label reveal">Folyamatos vezetői fókusz</p>
+        <h2 class="section-title reveal">A heti ritmus</h2>
         <div class="habits">
-          <article class="habit reveal"><span class="habit__n">01</span><h3>1:1 beszélgetések</h3></article>
-          <article class="habit reveal"><span class="habit__n">02</span><h3>Management by Walking Around</h3></article>
-          <article class="habit reveal"><span class="habit__n">03</span><h3>Domain Deep Dive</h3></article>
-          <article class="habit reveal"><span class="habit__n">04</span><h3>Projekt- és portfólió review</h3></article>
-          <article class="habit reveal"><span class="habit__n">05</span><h3>Stakeholder Management</h3></article>
-          <article class="habit reveal"><span class="habit__n">06</span><h3>Executive Journal</h3></article>
-          <article class="habit reveal"><span class="habit__n">07</span><h3>Quick Win Review</h3></article>
+          <article class="habit reveal"><span class="habit__n">01</span><h3>Heti 1:1-ek a vezetőkkel</h3></article>
+          <article class="habit reveal"><span class="habit__n">02</span><h3>Rendszeres stakeholder egyeztetések</h3></article>
+          <article class="habit reveal"><span class="habit__n">03</span><h3>Bankfiók- és operációs látogatások</h3></article>
+          <article class="habit reveal"><span class="habit__n">04</span><h3>Delivery és portfólió review</h3></article>
+          <article class="habit reveal"><span class="habit__n">05</span><h3>AI és innovációs lehetőségek keresése</h3></article>
+          <article class="habit reveal"><span class="habit__n">06</span><h3>Gyors döntéshozatal és akadályelhárítás</h3></article>
+          <article class="habit reveal"><span class="habit__n">07</span><h3>Csapatfejlesztés és coaching</h3></article>
+          <article class="habit reveal"><span class="habit__n">08</span><h3>Heti önreflexió</h3></article>
         </div>
       </div>
     </section>
 
     <section class="time" id="ido">
       <div class="wrap">
-        <p class="section-label reveal">06 — Vezetői fókusz megoszlása</p>
+        <p class="section-label reveal">Vezetői fókusz megoszlása</p>
         <h2 class="section-title reveal">Irányadó súlypontok</h2>
-        <p class="section-lead reveal">
-          A vezetői figyelem ajánlott eloszlása a teljes átmeneti időszakban.
-        </p>
         <div class="time__viz">
           <div class="bars reveal">
-            <div class="bar" style="--w: 35%">
+            <div class="bar" style="--w:35%">
               <div class="bar__top"><strong>People &amp; Leadership</strong><span>35%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">1:1-ek · MBWA · Coaching · People Review</p>
             </div>
-            <div class="bar" style="--w: 25%">
+            <div class="bar" style="--w:25%">
               <div class="bar__top"><strong>Business &amp; Stakeholder Alignment</strong><span>25%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">Üzleti egyeztetések · Stakeholder kapcsolatok · Alignment</p>
             </div>
-            <div class="bar" style="--w: 15%">
+            <div class="bar" style="--w:15%">
               <div class="bar__top"><strong>Data &amp; AI Transformation</strong><span>15%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">Data platformok · AI use case-ek · Roadmap</p>
             </div>
-            <div class="bar" style="--w: 10%">
+            <div class="bar" style="--w:10%">
               <div class="bar__top"><strong>Delivery, Architecture &amp; Technology</strong><span>10%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">Projekt review · Architektúra · Technológia</p>
             </div>
-            <div class="bar" style="--w: 10%">
-              <div class="bar__top"><strong>Reflexió és vezetői tervezés</strong><span>10%</span></div>
+            <div class="bar" style="--w:10%">
+              <div class="bar__top"><strong>Reflection / Executive Journal</strong><span>10%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">Executive Journal · Prioritások · Döntés-előkészítés</p>
             </div>
-            <div class="bar" style="--w: 5%">
+            <div class="bar" style="--w:5%">
               <div class="bar__top"><strong>IT Economics &amp; Strategic Sourcing</strong><span>5%</span></div>
               <div class="bar__track"><div class="bar__fill"></div></div>
-              <p class="bar__sub">IT Economics · Vendor Management · Sourcing</p>
             </div>
           </div>
           <p class="time__note reveal">
-            Az emberek és az üzleti alignment kapják a legnagyobb figyelmet — mert ezek alapozzák meg a januári döntéseket.
+            Az emberek és az üzleti alignment kapják a legnagyobb figyelmet — a terepen, az ügyfelek és a kollégák közelében.
             <small>People 35% · Business &amp; Stakeholder 25% · Data &amp; AI 15%</small>
           </p>
         </div>
@@ -1036,85 +795,66 @@
 
     <section class="outcomes-section" id="eredmenyek">
       <div class="wrap">
-        <p class="section-label reveal">07 — Expected Outcomes by Year-End</p>
-        <h2 class="section-title section-title--wide reveal">
-          December végére — mit jelent a kész?
-        </h2>
+        <p class="section-label reveal">Expected Outcomes</p>
+        <h2 class="section-title reveal">Amit el szeretnék érni</h2>
         <div class="outcome-grid">
           <article class="outcome reveal">
             <h3>Business</h3>
             <ul>
-              <li>Erős kapcsolat minden kulcs stakeholderrel</li>
-              <li>Dokumentált üzleti prioritások</li>
-              <li>Business–IT stratégiai alignment</li>
+              <li>Erős üzleti partnerség</li>
+              <li>Közös prioritások</li>
+              <li>Látható quick win eredmények</li>
             </ul>
           </article>
           <article class="outcome reveal">
             <h3>People</h3>
             <ul>
-              <li>Teljes People Review</li>
-              <li>Kulcsemberek és utánpótlási terv</li>
-              <li>Erős és egységes vezetői csapat</li>
+              <li>Magasan teljesítő vezetői csapat</li>
+              <li>Erős bizalom és együttműködés</li>
+              <li>Egyértelmű felelősségi körök</li>
             </ul>
           </article>
           <article class="outcome reveal">
             <h3>Technology</h3>
             <ul>
-              <li>Átlátható projektportfólió</li>
-              <li>Technológiai és architekturális helyzetkép</li>
-              <li>Priorizált fejlesztési területlista</li>
+              <li>Átlátható portfólió</li>
+              <li>Egyszerűbb működés</li>
+              <li>Javuló delivery teljesítmény</li>
             </ul>
           </article>
           <article class="outcome reveal">
             <h3>Data &amp; AI</h3>
             <ul>
-              <li>Data &amp; AI Capability Assessment</li>
-              <li>Legalább 5 magas üzleti értékű AI use case</li>
-              <li>Jóváhagyásra kész Data &amp; AI Roadmap</li>
+              <li>Priorizált AI roadmap</li>
+              <li>Elindított pilotok</li>
+              <li>Mérhető üzleti érték</li>
             </ul>
           </article>
           <article class="outcome reveal">
             <h3>IT Economics</h3>
             <ul>
               <li>Átlátható költségstruktúra</li>
-              <li>Vendor stratégia</li>
-              <li>Optimalizálási opportunity backlog</li>
+              <li>Optimalizált vendor működés</li>
+              <li>Megtakarítási lehetőségek azonosítása</li>
             </ul>
           </article>
           <article class="outcome reveal">
-            <h3>Operating Model</h3>
+            <h3>Leadership</h3>
             <ul>
-              <li>Jóváhagyásra kész Operating Model</li>
-              <li>Kialakított governance modell</li>
-              <li>Első 90 nap végrehajtási terve</li>
-            </ul>
-          </article>
-          <article class="outcome reveal">
-            <h3>Quick Wins</h3>
-            <ul>
-              <li>Legalább 2–3 érzékelhető eredmény</li>
-              <li>Üzleti és IT szervezet által is elismert fejlesztések</li>
-            </ul>
-          </article>
-          <article class="outcome reveal">
-            <h3>Executive Readiness</h3>
-            <ul>
-              <li>Tudatosan előkészített januári indulás</li>
-              <li>Közösen értelmezett irány és prioritások</li>
+              <li>Hiteles vezetői működés</li>
+              <li>Erős vezetői kultúra</li>
+              <li>Felkészített szervezet a következő növekedési szakaszra</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="success" id="siker">
+    <section class="success">
       <div class="wrap">
         <div class="close reveal">
-          <h3>Január 1. nem a megismerés kezdete.</h3>
-          <p>
-            A szervezet átvétele egy tudatosan előkészített, közösen értelmezett
-            és világos prioritások mentén működő vezetői időszak elindítását jelenti.
-          </p>
+          <h3>Keveset változtatni. Azt jól. Gyors eredményekkel.</h3>
+          <p>Megérteni, megőrizni, egyszerűsíteni — majd skálázni azt, ami valódi üzleti értéket teremt.</p>
         </div>
       </div>
     </section>
@@ -1122,7 +862,7 @@
 
   <footer>
     <span>MBH · Executive Transition Framework</span>
-    <span>Augusztus — December</span>
+    <span>Augusztus — Január</span>
   </footer>
 
 <script>
