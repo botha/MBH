@@ -298,56 +298,40 @@
     border: 1px solid var(--line); font-weight: 600; color: var(--mbh); font-size: 0.98rem;
   }
   .culture__values {
-    margin-top: 1rem;
-    padding: 1.5rem 1.35rem 1.6rem;
-    border-radius: 1.35rem;
-    background:
-      radial-gradient(80% 120% at 100% 0%, rgba(61,124,255,0.22), transparent 55%),
-      linear-gradient(135deg, var(--mbh) 0%, var(--mbh-deep) 100%);
-    color: #fff;
     grid-column: 1 / -1;
+    margin-top: 0.25rem;
+    padding: 0.85rem 0 0.1rem;
+    border-top: 1px solid var(--line);
   }
   .culture__values h3 {
-    margin: 0 0 1.15rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    margin: 0 0 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.72);
+    color: var(--faint);
   }
   .culture__values-list {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: grid;
-    gap: 0.85rem;
-  }
-  @media (min-width: 800px) {
-    .culture__values-list { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1.35rem;
   }
   .culture__values-list li {
-    padding: 1.15rem 1.1rem 1.2rem;
-    border-radius: 1rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.14);
-    min-height: 7.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: -0.01em;
   }
   .culture__values-list strong {
-    display: block;
-    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
+    font-weight: 600;
+    color: var(--mbh-soft);
   }
   .culture__values-list span {
-    display: block;
-    margin-top: 0.45rem;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.72);
+    color: var(--faint);
+    font-weight: 400;
   }
 
   .cadence { background: var(--mbh-wash); }
@@ -778,30 +762,12 @@
             <p>Ez a közösség nem helyettesíti a meglévő szervezeti struktúrát, és nem hoz létre párhuzamos hierarchiát. A napi működést továbbra is a meglévő vezetői rendszer biztosítja. A szakmai hálózat feladata ezzel párhuzamosan az, hogy összekapcsolja a különböző területeket, felgyorsítsa a tanulást, támogassa a változásokat, és segítsen abban, hogy a jól működő megoldások gyorsan elterjedjenek a szervezetben.</p>
           </article>
 
-          <article class="culture__card reveal">
+          <article class="culture__card culture__card--wide reveal">
             <h3>A kezdeti csapat kompetenciái</h3>
             <ul class="culture__triad">
               <li>Discovery és felhasználói igények feltárása</li>
               <li>Technológiai és architekturális gondolkodás</li>
               <li>Módszertani, változásmenedzsment- és transzformációs tapasztalat</li>
-            </ul>
-          </article>
-
-          <article class="culture__values reveal">
-            <h3>Közös értékek</h3>
-            <ul class="culture__values-list">
-              <li>
-                <strong>Bátorság</strong>
-                <span>Merjük felvállalni a változást</span>
-              </li>
-              <li>
-                <strong>Egyszerűség</strong>
-                <span>Simplicity — ahol lehet, egyszerűsíts</span>
-              </li>
-              <li>
-                <strong>Együttműködés</strong>
-                <span>Közösen, területeken átívelve</span>
-              </li>
             </ul>
           </article>
 
@@ -817,6 +783,15 @@
             <p>Minél rövidebb a visszacsatolási hurok az ügyfelek és a kollégák felé, annál jobb döntéseket tudunk hozni.</p>
             <p>A szakmai közösség egyik legfontosabb feladata éppen ennek a tanulási ciklusnak a felgyorsítása: a tapasztalatok megosztása, az akadályok lebontása és annak elősegítése, hogy a jó megoldások minél gyorsabban váljanak a szervezet természetes működésének részévé.</p>
           </article>
+
+          <div class="culture__values reveal">
+            <h3>Közös értékek</h3>
+            <ul class="culture__values-list">
+              <li><strong>Bátorság</strong></li>
+              <li><strong>Egyszerűség</strong> <span>(Simplicity)</span></li>
+              <li><strong>Együttműködés</strong></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
