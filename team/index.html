@@ -406,6 +406,12 @@
     .reveal { opacity: 1; transform: none; }
   }
 </style>
+<script>
+(() => {
+  const ok = sessionStorage.getItem("mbh_gate_ok") === "1" || localStorage.getItem("mbh_gate_ok") === "1";
+  document.documentElement.classList.add(ok ? "is-unlocked" : "is-locked");
+})();
+</script>
 <link rel="stylesheet" href="../gate.css" />
 <script src="../auth.js"></script>
 </head>
