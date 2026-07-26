@@ -33,8 +33,9 @@ jobs:
 
       - name: Prepare site
         run: |
-          mkdir -p _site
+          mkdir -p _site/team
           cp index.html _site/index.html
+          cp team/index.html _site/team/index.html
           touch _site/.nojekyll
 
       - name: Upload artifact
