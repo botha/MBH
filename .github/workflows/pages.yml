@@ -33,9 +33,10 @@ jobs:
 
       - name: Prepare site
         run: |
-          mkdir -p _site/team
+          mkdir -p _site/team/cvs
           cp index.html _site/index.html
           cp team/index.html _site/team/index.html
+          cp team/cvs/*.pdf _site/team/cvs/
           touch _site/.nojekyll
 
       - name: Upload artifact
