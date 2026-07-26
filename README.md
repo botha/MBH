@@ -4,8 +4,9 @@ Premium single-page executive framework (`index.html`).
 
 ## Live
 
-https://botha.github.io/MBH/
+- Framework: https://botha.github.io/MBH/
+- Team: https://botha.github.io/MBH/team/
 
 ## Local
 
-Open `index.html` in a browser.
+Open `index.html` or `team/index.html` in a browser.
