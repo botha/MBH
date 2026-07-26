@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MBH — Csapat</title>
-<meta name="description" content="A szakmai mag: 8 fős csapat a változás és a folyamatos fejlődés támogatására." />
+<meta name="description" content="A szakmai mag: 10 fős csapat a változás és a folyamatos fejlődés támogatására." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -160,8 +160,8 @@
   .constellation {
     margin: 2.5rem auto 0;
     position: relative;
-    width: min(100%, 420px);
-    height: 220px;
+    width: min(100%, 460px);
+    height: 260px;
   }
   .constellation__core {
     position: absolute;
@@ -192,14 +192,20 @@
     transform: scale(1.08);
     border-color: var(--accent);
   }
-  .constellation__node:nth-child(2) { left: 8%; top: 18%; }
-  .constellation__node:nth-child(3) { left: 38%; top: 4%; }
-  .constellation__node:nth-child(4) { right: 10%; top: 14%; }
-  .constellation__node:nth-child(5) { right: 2%; top: 48%; }
-  .constellation__node:nth-child(6) { right: 14%; bottom: 8%; }
-  .constellation__node:nth-child(7) { left: 40%; bottom: 2%; }
-  .constellation__node:nth-child(8) { left: 6%; bottom: 16%; }
-  .constellation__node:nth-child(9) { left: 0%; top: 46%; }
+  .constellation__node.is-later {
+    opacity: 0.55;
+    border-style: dashed;
+  }
+  .constellation__node:nth-child(2) { left: 6%; top: 22%; }
+  .constellation__node:nth-child(3) { left: 28%; top: 4%; }
+  .constellation__node:nth-child(4) { left: 52%; top: 2%; }
+  .constellation__node:nth-child(5) { right: 8%; top: 12%; }
+  .constellation__node:nth-child(6) { right: 0%; top: 40%; }
+  .constellation__node:nth-child(7) { right: 10%; bottom: 18%; }
+  .constellation__node:nth-child(8) { right: 34%; bottom: 2%; }
+  .constellation__node:nth-child(9) { left: 28%; bottom: 4%; }
+  .constellation__node:nth-child(10) { left: 4%; bottom: 20%; }
+  .constellation__node:nth-child(11) { left: 0%; top: 48%; }
 
   .crew {
     margin: 3rem auto 0;
@@ -269,6 +275,36 @@
     color: var(--mbh);
     line-height: 1.15;
   }
+  .crew__item.is-later h3 { color: var(--mbh-soft); }
+  .crew__item.is-later .crew__dot {
+    border-color: var(--faint);
+    box-shadow: 0 0 0 6px rgba(139,149,168,0.12);
+  }
+  .crew__tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0 0 0.65rem;
+  }
+  @media (min-width: 820px) {
+    .crew__item:nth-child(odd) .crew__tags { justify-content: flex-end; }
+  }
+  .tag {
+    display: inline-flex; align-items: center;
+    padding: 0.22rem 0.55rem;
+    border-radius: 0.35rem;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .tag--later {
+    color: var(--mbh-soft);
+    background: rgba(47,60,108,0.08);
+    border: 1px solid rgba(47,60,108,0.14);
+  }
+  .tag--part {
+    color: #2a5a9e;
+    background: rgba(61,124,255,0.1);
+    border: 1px solid rgba(61,124,255,0.22);
+  }
   .crew__item p {
     margin: 0;
     font-size: 0.98rem;
@@ -321,7 +357,7 @@
       <span class="nav__mark">MBH</span>
       Team
     </a>
-    <p class="nav__meta">8 fő · szakmai mag</p>
+    <p class="nav__meta">10 fő · szakmai mag</p>
   </header>
 
   <main id="top">
@@ -335,7 +371,7 @@
           <span>A szakmai mag</span>
         </h1>
         <p class="hero__lede">
-          Nyolc kolléga — discovery, architektúra, delivery és változásmenedzsment
+          Tíz kolléga — vezetés, discovery, technológia és szervezeti transzformáció
           találkozása. Nem párhuzamos szervezet: lendület, tudásmegosztás és közös szemlélet.
         </p>
         <div class="hero__cta">
@@ -363,71 +399,98 @@
     <section class="team" id="csapat">
       <div class="wrap">
         <p class="section-label reveal">Csapat</p>
-        <h2 class="section-title reveal">Nyolc fő. Egy szemlélet.</h2>
+        <h2 class="section-title reveal">Tíz fő. Egy szemlélet.</h2>
         <p class="section-lead reveal">
-          Nem külön dobozok — egy közös háló. Fiktív nevek; a szerepek a discovery, technológia és transzformáció metszetét képviselik.
+          Nem külön dobozok — egy közös háló. A szerepek a vezetés, discovery, technológia és transzformáció metszetét képviselik.
         </p>
 
         <div class="constellation reveal" aria-hidden="true">
           <div class="constellation__core">Együtt<br />dolgozunk</div>
-          <div class="constellation__node">NK</div>
+          <div class="constellation__node">BA</div>
+          <div class="constellation__node">TD</div>
+          <div class="constellation__node">GM</div>
+          <div class="constellation__node">KB</div>
           <div class="constellation__node">BG</div>
-          <div class="constellation__node">SZ</div>
-          <div class="constellation__node">FM</div>
-          <div class="constellation__node">TL</div>
-          <div class="constellation__node">HD</div>
-          <div class="constellation__node">OV</div>
-          <div class="constellation__node">KJ</div>
+          <div class="constellation__node is-later">BZ</div>
+          <div class="constellation__node is-later">NM</div>
+          <div class="constellation__node">AM</div>
+          <div class="constellation__node is-later">Ke</div>
+          <div class="constellation__node">SP</div>
         </div>
 
         <div class="crew">
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Discovery Lead</p>
-            <h3>Németh Kata</h3>
-            <p>Felhasználói igények feltárása, customer journey-k és pain pointok — a fiókoktól a digitális csatornákig.</p>
+            <p class="crew__role">Executive Lead</p>
+            <h3>Both András</h3>
+            <p>Kijelöli az irányt, meghozza a nehéz döntéseket, és összetartja a csapatot.</p>
           </article>
           <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Chief of Staff</p>
+            <h3>Temesi Dóra Anna</h3>
+            <p>A csapat motorja. Átlátja a működést, koordinálja a feladatokat, és szükség esetén önállóan is képviseli a vezetőt.</p>
+          </article>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Transformation Lead</p>
+            <h3>Guthy Miklós</h3>
+            <p>Karizmatikus vezető, akit a fejlesztők és a vezetők egyaránt hitelesnek tartanak, és akit szívesen követnek a változásban.</p>
+          </article>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Service &amp; Product Lead</p>
+            <h3>Kovács Bálint</h3>
+            <p>Az üzleti problémákból valódi szolgáltatásokat és termékeket épít.</p>
+          </article>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Discovery &amp; Design Lead</p>
+            <h3>Biai Gergely</h3>
+            <p>Egyszemélyes hadsereg. Kutat, elemez, stratégiai anyagokat készít, és minden fontos kérdés végére jár.</p>
+          </article>
+          <article class="crew__item reveal is-later">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Enterprise Architect</p>
-            <h3>Balogh Gergely</h3>
-            <p>Architektúrális irányok, technológiai adósság és egyszerűsítés — stabil alap a gyorsabb megvalósításhoz.</p>
+            <h3>Bányai Zsolt</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Január 1-től</span>
+            </div>
+            <p>Nincs olyan technológia, amit ne látott volna. A legösszetettebb problémákat is átlátja, és a legjobban közös gondolkodásban érzi magát.</p>
+          </article>
+          <article class="crew__item reveal is-later">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Technology Lead</p>
+            <h3>Nándori Miklós</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Január 1-től</span>
+            </div>
+            <p>A technológiai elképzeléseket működő megoldásokká alakítja, és a terepen is biztos kézzel valósítja meg azokat.</p>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Change Lead</p>
-            <h3>Szilágyi Zsófia</h3>
-            <p>Változásmenedzsment és vezetői alignment — hogy a jó megoldások gyorsan elterjedjenek a szervezetben.</p>
+            <p class="crew__role">Software Craftsmanship Lead</p>
+            <h3>Andó Mihály</h3>
+            <div class="crew__tags">
+              <span class="tag tag--part">Részmunkaidő</span>
+            </div>
+            <p>Kíméletlen transzformátor. Kizökkenti a csapatokat a komfortzónából, és jobb mérnöki gondolkodásra ösztönöz.</p>
+          </article>
+          <article class="crew__item reveal is-later">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Agile Transformation Lead</p>
+            <h3>Kulcsár Bence</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Január 1-től</span>
+              <span class="tag tag--part">Részmunkaidő</span>
+            </div>
+            <p>Az egyik legerősebb hazai szervezeti transzformációs szakember, aki a telekommunikáció, a bankszektor és az államigazgatás világában egyaránt bizonyított.</p>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Delivery Coach</p>
-            <h3>Fekete Márk</h3>
-            <p>Delivery folyamatok, akadályelhárítás és kiszámíthatóbb megvalósítás a csapatok mellett.</p>
-          </article>
-          <article class="crew__item reveal">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Product Discovery</p>
-            <h3>Takács Lilla</h3>
-            <p>Üzleti és felhasználói érték összekötése: hipotézisek, gyors kísérletek, mindennapi problémák.</p>
-          </article>
-          <article class="crew__item reveal">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Data &amp; AI</p>
-            <h3>Hegedűs Dávid</h3>
-            <p>Adatvezérelt működés és AI use case-ek — mérhető érték a mindennapi munkában.</p>
-          </article>
-          <article class="crew__item reveal">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Transformation Methods</p>
-            <h3>Orbán Vera</h3>
-            <p>Módszertan, workshopok és működési minták — a hálózat tanulási ciklusának felgyorsítása.</p>
-          </article>
-          <article class="crew__item reveal">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Enablement &amp; Ops</p>
-            <h3>Kiss János</h3>
-            <p>Operációs jelenlét és tudásmegosztás — hogy a változások a napi működésbe beépüljenek.</p>
+            <p class="crew__role">People Lead</p>
+            <h3>Sashalmi Péter</h3>
+            <p>A csapat stabil pontja. Figyel az emberekre, összefogja a működést, és időben kezeli a konfliktusokat.</p>
           </article>
         </div>
       </div>
@@ -448,7 +511,7 @@
 
   <footer>
     <span>MBH · Team</span>
-    <span>Fiktív nevek · demo</span>
+    <span>Change Network · szakmai mag</span>
   </footer>
 
 <script>
