@@ -315,9 +315,15 @@
   @media (min-width: 820px) {
     .crew__item:nth-child(odd) p { margin-left: auto; }
   }
+  .crew__links {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem 1rem;
+    margin-top: 0.75rem;
+  }
+  @media (min-width: 820px) {
+    .crew__item:nth-child(odd) .crew__links { justify-content: flex-end; }
+  }
   .crew__cv {
     display: inline-flex; align-items: center; gap: 0.35rem;
-    margin-top: 0.75rem;
     font-size: 0.82rem; font-weight: 700;
     letter-spacing: 0.04em;
     color: var(--accent);
@@ -446,42 +452,60 @@
             <p class="crew__role">Executive Lead</p>
             <h3>Both András</h3>
             <p>Kijelöli az irányt, meghozza a nehéz döntéseket, és összetartja a csapatot.</p>
-            <a class="crew__cv" href="cvs/both-andras.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/both-andras.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/both-andras/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Chief of Staff</p>
             <h3>Temesi Dóra Anna</h3>
             <p>A csapat motorja. Átlátja a működést, koordinálja a feladatokat, és szükség esetén önállóan is képviseli a vezetőt.</p>
-            <a class="crew__cv" href="cvs/temesi-dora-anna.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/temesi-dora-anna.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/dora-anna-temesi-064057111/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Transformation Lead</p>
             <h3>Guthy Miklós</h3>
             <p>Karizmatikus vezető, akit a fejlesztők és a vezetők egyaránt hitelesnek tartanak, és akit szívesen követnek a változásban.</p>
-            <a class="crew__cv" href="cvs/guthy-miklos.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/guthy-miklos.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <span class="crew__cv crew__cv--none">LinkedIn feltöltés alatt</span>
+            </div>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Service &amp; Product Lead</p>
             <h3>Kovács Bálint</h3>
             <p>Az üzleti problémákból valódi szolgáltatásokat és termékeket épít.</p>
-            <a class="crew__cv" href="cvs/kovacs-balint.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/kovacs-balint.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/balintkov/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Discovery &amp; Design Lead</p>
             <h3>Biai Gergely</h3>
             <p>Egyszemélyes hadsereg. Kutat, elemez, stratégiai anyagokat készít, és minden fontos kérdés végére jár.</p>
-            <a class="crew__cv" href="cvs/biai-gergely.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/biai-gergely.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/gergelybiai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Organizational Integrator</p>
             <h3>Sashalmi Péter</h3>
             <p>Összeköti a szervezeteket, feloldja a konfliktusokat, és biztosítja, hogy a problémák ne akadályozzák a közös munkát.</p>
-            <a class="crew__cv" href="cvs/sashalmi-peter.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/sashalmi-peter.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/p%C3%A9ter-sashalmi-4b6a27196/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal is-later">
             <span class="crew__dot" aria-hidden="true"></span>
@@ -491,7 +515,10 @@
               <span class="tag tag--later">Január 1-től</span>
             </div>
             <p>Nincs olyan technológia, amit ne látott volna. A legösszetettebb problémákat is átlátja, és a legjobban közös gondolkodásban érzi magát.</p>
-            <a class="crew__cv" href="cvs/banyai-zsolt.pdf" target="_blank" rel="noopener">CV megnyitása</a>
+            <div class="crew__links">
+              <a class="crew__cv" href="cvs/banyai-zsolt.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
+              <a class="crew__cv" href="https://www.linkedin.com/in/bazso/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal is-later">
             <span class="crew__dot" aria-hidden="true"></span>
@@ -501,7 +528,10 @@
               <span class="tag tag--later">Január 1-től</span>
             </div>
             <p>A technológiai elképzeléseket működő megoldásokká alakítja, és a terepen is biztos kézzel valósítja meg azokat.</p>
-            <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+            <div class="crew__links">
+              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+              <span class="crew__cv crew__cv--none">LinkedIn nincs</span>
+            </div>
           </article>
           <article class="crew__item reveal is-later">
             <span class="crew__dot" aria-hidden="true"></span>
@@ -512,7 +542,10 @@
               <span class="tag tag--part">Részmunkaidő</span>
             </div>
             <p>Kíméletlen transzformátor. Kizökkenti a csapatokat a komfortzónából, és jobb mérnöki gondolkodásra ösztönöz.</p>
-            <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+            <div class="crew__links">
+              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+              <a class="crew__cv" href="https://www.linkedin.com/in/mih%C3%A1ly-and%C3%B3-9a05b812b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
           <article class="crew__item reveal is-later">
             <span class="crew__dot" aria-hidden="true"></span>
@@ -523,7 +556,10 @@
               <span class="tag tag--part">Részmunkaidő</span>
             </div>
             <p>Az egyik legerősebb hazai szervezeti transzformációs szakember, aki a telekommunikáció, a bankszektor és az államigazgatás világában egyaránt bizonyított.</p>
-            <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+            <div class="crew__links">
+              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+              <a class="crew__cv" href="https://www.linkedin.com/in/kulcsarbence/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </article>
         </div>
       </div>
