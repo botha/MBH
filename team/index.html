@@ -362,6 +362,33 @@
     letter-spacing: -0.025em; color: var(--ink); line-height: 1.35;
   }
 
+  .people { background: var(--mbh-wash); }
+  .people-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .people-list li {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .people-list__name {
+    margin: 0;
+    font-size: 1.05rem; font-weight: 700;
+    letter-spacing: -0.025em; color: var(--mbh);
+  }
+  .people-list__link {
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.04em; color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .people-list__link:hover {
+    color: var(--mbh);
+    border-bottom-color: var(--mbh);
+  }
+
   footer {
     padding: 1.35rem var(--pad) 1.75rem;
     display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
@@ -574,6 +601,114 @@
           <li class="reveal"><span>02</span><p>Technológiai és architekturális gondolkodás</p></li>
           <li class="reveal"><span>03</span><p>Módszertani, változásmenedzsment- és transzformációs tapasztalat</p></li>
         </ol>
+      </div>
+    </section>
+
+    <section class="people" id="emberek">
+      <div class="wrap">
+        <p class="section-label reveal">Merítés</p>
+        <h2 class="section-title reveal">Van még merítés</h2>
+        <p class="section-lead reveal">
+          További kollégák, akikkel együtt lehet építeni — név és elérhető profil.
+        </p>
+        <ul class="people-list">
+          <li class="reveal">
+            <p class="people-list__name">Bartus Balázs</p>
+            <a class="people-list__link" href="cvs/people/bartus-balazs.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Benyovszki Luca</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/luca-benyovszky/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Berényi Zsolt</p>
+            <a class="people-list__link" href="cvs/people/berenyi-zsolt.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Csorba Gergely</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/csorba-gergely-84a6a784/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Endrédy István</p>
+            <a class="people-list__link" href="cvs/people/endredy-istvan.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Havasi Bálint</p>
+            <a class="people-list__link" href="cvs/people/havasi-balint.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Ikladi Ákos</p>
+            <a class="people-list__link" href="cvs/people/ikladi-akos.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Karlócai Gábor</p>
+            <a class="people-list__link" href="cvs/people/karlocai-gabor.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Koncz Péter</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/peter-koncz-6b350939/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Kovács András</p>
+            <a class="people-list__link" href="cvs/people/kovacs-andras.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Lánchidi Balázs</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/balazs-lanchidi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Nagy Tamás</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/tam%C3%A1s-nagy-95671a60/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Padányi Gulyás Gergely</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/gergely-pad%C3%A1nyi-guly%C3%A1s-4941943/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Rill Gergely</p>
+            <a class="people-list__link" href="cvs/people/rill-gergely.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Schanda Gergely</p>
+            <a class="people-list__link" href="cvs/people/schanda-gergely.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Schmidt Pál</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/palschmidt916595/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Soós Ádám</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/%C3%A1d%C3%A1m-so%C3%B3s-2b878a77/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Sóvári Roland</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/roland-sovari/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Sticza Ferenc</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/ferenc-sticza-ab9a1814/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Szegedi Attila</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/attilaszegedi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Thuróczy Márk</p>
+            <a class="people-list__link" href="https://www.linkedin.com/in/thuroczymark/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Tóth Attila</p>
+            <a class="people-list__link" href="cvs/people/toth-attila.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Vámosi József</p>
+            <a class="people-list__link" href="cvs/people/vamosi-jozsef.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+          <li class="reveal">
+            <p class="people-list__name">Wagner Ákos</p>
+            <a class="people-list__link" href="cvs/people/wagner-akos.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
