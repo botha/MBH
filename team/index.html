@@ -157,52 +157,127 @@
   }
 
   .team { background: var(--mbh-wash); }
-  .team-grid {
-    margin-top: 2.75rem;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr;
+  .constellation {
+    margin: 2.5rem auto 0;
+    position: relative;
+    width: min(100%, 420px);
+    height: 220px;
   }
-  @media (min-width: 700px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-
-  .person {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.1rem;
-    align-items: start;
-    padding: 1.35rem 1.3rem 1.45rem;
-    border-radius: 1.25rem;
-    background: var(--white);
-    border: 1px solid var(--line);
-    transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  .constellation__core {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5.5rem; height: 5.5rem;
+    border-radius: 50%;
+    display: grid; place-items: center; text-align: center;
+    background: var(--mbh); color: #fff;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; line-height: 1.25;
+    box-shadow: 0 16px 40px rgba(47,60,108,0.25);
+    z-index: 2;
   }
-  .person:hover {
-    transform: translateY(-2px);
-    border-color: rgba(47,60,108,0.22);
-    box-shadow: 0 14px 36px rgba(47,60,108,0.08);
-  }
-  .person__avatar {
-    width: 3.4rem; height: 3.4rem; border-radius: 1rem;
+  .constellation__node {
+    position: absolute;
+    width: 3.1rem; height: 3.1rem;
+    border-radius: 50%;
     display: grid; place-items: center;
-    background: linear-gradient(145deg, var(--mbh-mist), var(--sky));
+    background: var(--white);
+    border: 2px solid rgba(47,60,108,0.12);
     color: var(--mbh);
-    font-size: 0.95rem; font-weight: 800; letter-spacing: -0.02em;
+    font-size: 0.78rem; font-weight: 800;
+    box-shadow: 0 8px 20px rgba(47,60,108,0.08);
+    transition: transform 0.3s var(--ease), border-color 0.3s;
   }
-  .person__meta { min-width: 0; }
-  .person__role {
+  .constellation__node:hover {
+    transform: scale(1.08);
+    border-color: var(--accent);
+  }
+  .constellation__node:nth-child(2) { left: 8%; top: 18%; }
+  .constellation__node:nth-child(3) { left: 38%; top: 4%; }
+  .constellation__node:nth-child(4) { right: 10%; top: 14%; }
+  .constellation__node:nth-child(5) { right: 2%; top: 48%; }
+  .constellation__node:nth-child(6) { right: 14%; bottom: 8%; }
+  .constellation__node:nth-child(7) { left: 40%; bottom: 2%; }
+  .constellation__node:nth-child(8) { left: 6%; bottom: 16%; }
+  .constellation__node:nth-child(9) { left: 0%; top: 46%; }
+
+  .crew {
+    margin: 3rem auto 0;
+    position: relative;
+    max-width: 820px;
+    padding: 0.5rem 0 0;
+  }
+  .crew::before {
+    content: "";
+    position: absolute;
+    left: 1.35rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), rgba(47,60,108,0.12));
+  }
+  @media (min-width: 820px) {
+    .crew::before { left: 50%; transform: translateX(-50%); }
+  }
+  .crew__item {
+    position: relative;
+    padding: 0 0 2.4rem 3.4rem;
+  }
+  @media (min-width: 820px) {
+    .crew__item {
+      width: 50%;
+      padding: 0 2.5rem 2.8rem;
+    }
+    .crew__item:nth-child(odd) {
+      margin-left: 0;
+      text-align: right;
+      padding-right: 3.2rem;
+      padding-left: 1rem;
+    }
+    .crew__item:nth-child(even) {
+      margin-left: 50%;
+      text-align: left;
+      padding-left: 3.2rem;
+      padding-right: 1rem;
+    }
+  }
+  .crew__dot {
+    position: absolute;
+    left: 0.85rem;
+    top: 0.35rem;
+    width: 1.1rem; height: 1.1rem;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(61,124,255,0.1);
+    z-index: 2;
+  }
+  @media (min-width: 820px) {
+    .crew__item:nth-child(odd) .crew__dot { left: auto; right: -0.55rem; }
+    .crew__item:nth-child(even) .crew__dot { left: -0.55rem; }
+  }
+  .crew__role {
     margin: 0 0 0.35rem;
     font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
   }
-  .person h3 {
+  .crew__item h3 {
     margin: 0 0 0.45rem;
-    font-size: 1.25rem; font-weight: 800;
-    letter-spacing: -0.03em; color: var(--mbh);
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    color: var(--mbh);
+    line-height: 1.15;
   }
-  .person p {
+  .crew__item p {
     margin: 0;
-    font-size: 0.95rem; color: var(--muted); line-height: 1.5;
+    font-size: 0.98rem;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 34ch;
+  }
+  @media (min-width: 820px) {
+    .crew__item:nth-child(odd) p { margin-left: auto; }
   }
 
   .focus { background: var(--white); }
@@ -235,7 +310,7 @@
     to { transform: translate3d(-2%,3%,0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .hero__orb, .person { transition: none !important; animation: none !important; }
+    .reveal, .hero__orb, .constellation__node { transition: none !important; animation: none !important; }
     .reveal { opacity: 1; transform: none; }
   }
 </style>
@@ -290,80 +365,69 @@
         <p class="section-label reveal">Csapat</p>
         <h2 class="section-title reveal">Nyolc fő. Egy szemlélet.</h2>
         <p class="section-lead reveal">
-          Fiktív nevek — a szerepek a discovery, technológia és transzformáció metszetét képviselik.
+          Nem külön dobozok — egy közös háló. Fiktív nevek; a szerepek a discovery, technológia és transzformáció metszetét képviselik.
         </p>
 
-        <div class="team-grid">
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">NK</div>
-            <div class="person__meta">
-              <p class="person__role">Discovery Lead</p>
-              <h3>Németh Kata</h3>
-              <p>Felhasználói igények feltárása, customer journey-k és pain pointok azonosítása a fiókoktól a digitális csatornákig.</p>
-            </div>
-          </article>
+        <div class="constellation reveal" aria-hidden="true">
+          <div class="constellation__core">Együtt<br />dolgozunk</div>
+          <div class="constellation__node">NK</div>
+          <div class="constellation__node">BG</div>
+          <div class="constellation__node">SZ</div>
+          <div class="constellation__node">FM</div>
+          <div class="constellation__node">TL</div>
+          <div class="constellation__node">HD</div>
+          <div class="constellation__node">OV</div>
+          <div class="constellation__node">KJ</div>
+        </div>
 
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">BG</div>
-            <div class="person__meta">
-              <p class="person__role">Enterprise Architect</p>
-              <h3>Balogh Gergely</h3>
-              <p>Architektúrális irányok, technológiai adósság és egyszerűsítési lehetőségek — stabil alap a gyorsabb megvalósításhoz.</p>
-            </div>
+        <div class="crew">
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Discovery Lead</p>
+            <h3>Németh Kata</h3>
+            <p>Felhasználói igények feltárása, customer journey-k és pain pointok — a fiókoktól a digitális csatornákig.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">SZ</div>
-            <div class="person__meta">
-              <p class="person__role">Change Lead</p>
-              <h3>Szilágyi Zsófia</h3>
-              <p>Változásmenedzsment, vezetői alignment és annak támogatása, hogy a jó megoldások gyorsan elterjedjenek a szervezetben.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Enterprise Architect</p>
+            <h3>Balogh Gergely</h3>
+            <p>Architektúrális irányok, technológiai adósság és egyszerűsítés — stabil alap a gyorsabb megvalósításhoz.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">FM</div>
-            <div class="person__meta">
-              <p class="person__role">Delivery Coach</p>
-              <h3>Fekete Márk</h3>
-              <p>Delivery folyamatok finomhangolása, akadályelhárítás és kiszámíthatóbb megvalósítás a csapatok mellett.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Change Lead</p>
+            <h3>Szilágyi Zsófia</h3>
+            <p>Változásmenedzsment és vezetői alignment — hogy a jó megoldások gyorsan elterjedjenek a szervezetben.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">TL</div>
-            <div class="person__meta">
-              <p class="person__role">Product Discovery</p>
-              <h3>Takács Lilla</h3>
-              <p>Üzleti és felhasználói érték összekötése: hipotézisek, gyors kísérletek és prioritások a mindennapi problémák mentén.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Delivery Coach</p>
+            <h3>Fekete Márk</h3>
+            <p>Delivery folyamatok, akadályelhárítás és kiszámíthatóbb megvalósítás a csapatok mellett.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">HD</div>
-            <div class="person__meta">
-              <p class="person__role">Data &amp; AI</p>
-              <h3>Hegedűs Dávid</h3>
-              <p>Adatvezérelt működés és AI use case-ek — a mindennapi munkát támogató, mérhető üzleti értékű megoldások.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Product Discovery</p>
+            <h3>Takács Lilla</h3>
+            <p>Üzleti és felhasználói érték összekötése: hipotézisek, gyors kísérletek, mindennapi problémák.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">OV</div>
-            <div class="person__meta">
-              <p class="person__role">Transformation Methods</p>
-              <h3>Orbán Vera</h3>
-              <p>Módszertan, workshopok és működési minták — a hálózat tanulási ciklusának felgyorsítása.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Data &amp; AI</p>
+            <h3>Hegedűs Dávid</h3>
+            <p>Adatvezérelt működés és AI use case-ek — mérhető érték a mindennapi munkában.</p>
           </article>
-
-          <article class="person reveal">
-            <div class="person__avatar" aria-hidden="true">KJ</div>
-            <div class="person__meta">
-              <p class="person__role">Enablement &amp; Ops</p>
-              <h3>Kiss János</h3>
-              <p>Operációs jelenlét, tudásmegosztás és annak biztosítása, hogy a változások a napi működésbe beépüljenek.</p>
-            </div>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Transformation Methods</p>
+            <h3>Orbán Vera</h3>
+            <p>Módszertan, workshopok és működési minták — a hálózat tanulási ciklusának felgyorsítása.</p>
+          </article>
+          <article class="crew__item reveal">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Enablement &amp; Ops</p>
+            <h3>Kiss János</h3>
+            <p>Operációs jelenlét és tudásmegosztás — hogy a változások a napi működésbe beépüljenek.</p>
           </article>
         </div>
       </div>
