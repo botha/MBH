@@ -443,32 +443,45 @@
   }
 
   .outcomes-section { background: var(--mbh-wash); }
-  .outcome-grid {
-    margin-top: 2.75rem; display: grid; gap: 0.85rem;
+  .smart-list {
+    margin-top: 2.75rem;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
   }
-  @media (min-width: 800px) { .outcome-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1100px) { .outcome-grid { grid-template-columns: repeat(3, 1fr); } }
-  .outcome {
-    padding: 1.3rem 1.25rem; border-radius: 1.15rem;
-    border: 1px solid var(--line); background: var(--white);
+  .smart {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line);
   }
-  .outcome h3 {
-    margin: 0 0 0.7rem; font-size: 1.02rem; font-weight: 800;
-    color: var(--mbh); letter-spacing: -0.02em;
+  @media (min-width: 820px) {
+    .smart {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
   }
-  .outcome p {
+  .smart__n {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .smart__body h3 {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--mbh);
+    line-height: 1.2;
+  }
+  .smart__body p {
     margin: 0;
-    font-size: 0.98rem;
+    font-size: 1.02rem;
     color: var(--muted);
-    line-height: 1.5;
-  }
-  .outcome ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
-  .outcome li {
-    position: relative; padding-left: 0.9rem; font-size: 0.92rem; color: var(--ink);
-  }
-  .outcome li::before {
-    content: ""; position: absolute; left: 0; top: 0.55em;
-    width: 0.35rem; height: 0.35rem; border-radius: 50%; background: var(--ok);
+    line-height: 1.55;
+    max-width: 62ch;
   }
 
   .success {
@@ -527,7 +540,7 @@
       <a href="#fazisok">Fázisok</a>
       <a href="#kultura">Kultúra</a>
       <a href="#ritmus">Fókusz</a>
-      <a href="#eredmenyek">Eredmények</a>
+      <a href="#eredmenyek">SMART célok</a>
     </nav>
     <p class="nav__meta">Aug — Jan</p>
   </header>
@@ -923,32 +936,42 @@
 
     <section class="outcomes-section" id="eredmenyek">
       <div class="wrap">
-        <p class="section-label reveal">Expected Outcomes</p>
-        <h2 class="section-title reveal">Amit el szeretnénk érni</h2>
-        <div class="outcome-grid">
-          <article class="outcome reveal">
-            <h3>Customer, User &amp; Business Alignment</h3>
-            <p>Az ügyfelek, felhasználók és az üzlet igényeire épülő döntések és prioritások.</p>
+        <p class="section-label reveal">SMART célok</p>
+        <h2 class="section-title section-title--wide reveal">Amit 2026 végéig el szeretnénk érni</h2>
+        <div class="smart-list">
+          <article class="smart reveal">
+            <span class="smart__n">01</span>
+            <div class="smart__body">
+              <h3>A Change Network megalapozása</h3>
+              <p>
+                2026. december 31-ig létrejön egy legalább 20 fős Change Network, amely az IT szervezet
+                legalább három különböző területéről áll össze. A közösség a vezetőkkel közösen kialakított,
+                priorizált és elfogadott backlog mentén kezdi meg működését.
+              </p>
+            </div>
           </article>
-          <article class="outcome reveal">
-            <h3>People &amp; Leadership</h3>
-            <p>Elkötelezett vezetők, fejlődő csapatok és magas bizalmi kultúra.</p>
+          <article class="smart reveal">
+            <span class="smart__n">02</span>
+            <div class="smart__body">
+              <h3>End-to-end, felhasználó-központú fejlesztési minta kialakítása</h3>
+              <p>
+                2026. december 31-ig egy kiemelt (flagship) projektben élesítünk egy olyan funkciót, amely
+                bizonyíthatóan felhasználói visszajelzés alapján készült. A kezdeményezés teljes életútja –
+                a kutatástól és dokumentációtól kezdve a fejlesztésen, tesztelésen és CI/CD folyamaton át
+                az élesítésig – bemutatható módon dokumentált, és mintaként szolgál a jövőbeni termékfejlesztések számára.
+              </p>
+            </div>
           </article>
-          <article class="outcome reveal">
-            <h3>Delivery, Architecture &amp; Technology</h3>
-            <p>Egyszerűbb, gyorsabb és kiszámíthatóbb megvalósítás, stabil technológiai alapokkal.</p>
-          </article>
-          <article class="outcome reveal">
-            <h3>Data &amp; AI Transformation</h3>
-            <p>Adatvezérelt működés és a mindennapi munkát támogató AI-megoldások.</p>
-          </article>
-          <article class="outcome reveal">
-            <h3>IT Economics &amp; Strategic Sourcing</h3>
-            <p>Átlátható IT-befektetések, hatékony működés és tudatos partnerkezelés.</p>
-          </article>
-          <article class="outcome reveal">
-            <h3>Change Network</h3>
-            <p>A szervezetet összekötő hálózat, amely felgyorsítja a tanulást, támogatja a változást, megosztja a tudást és fenntartja a folyamatos fejlődést.</p>
+          <article class="smart reveal">
+            <span class="smart__n">03</span>
+            <div class="smart__body">
+              <h3>Az ügyfélközelség kultúrájának elindítása</h3>
+              <p>
+                2026. december 31-ig elindítjuk a „Találkozz a felhasználóval” programot, amelynek keretében
+                az IT terület munkatársainak legalább 10%-a személyesen találkozik ügyfelekkel vagy felhasználókkal,
+                és a megszerzett tapasztalatokat dokumentált módon visszacsatornázzuk a termék- és fejlesztési döntésekbe.
+              </p>
+            </div>
           </article>
         </div>
       </div>
