@@ -196,6 +196,15 @@
     opacity: 0.55;
     border-style: dashed;
   }
+  .constellation__node.is-hired {
+    border-color: #1f8a5b;
+    color: #1f8a5b;
+    box-shadow: 0 0 0 3px rgba(31,138,91,0.12), 0 8px 20px rgba(47,60,108,0.08);
+  }
+  .constellation__node.is-expert {
+    border-color: #b45309;
+    color: #9a3412;
+  }
   .constellation__node:nth-child(2) { left: 6%; top: 22%; }
   .constellation__node:nth-child(3) { left: 28%; top: 4%; }
   .constellation__node:nth-child(4) { left: 52%; top: 2%; }
@@ -280,6 +289,20 @@
     border-color: var(--faint);
     box-shadow: 0 0 0 6px rgba(139,149,168,0.12);
   }
+  .crew__item.is-hired {
+    outline: 1.5px solid rgba(31,138,91,0.35);
+    outline-offset: 0.55rem;
+    border-radius: 0.4rem;
+  }
+  .crew__item.is-hired .crew__dot {
+    border-color: #1f8a5b;
+    box-shadow: 0 0 0 6px rgba(31,138,91,0.12);
+  }
+  .crew__item.is-hired h3 { color: #1a6b48; }
+  .crew__item.is-expert .crew__dot {
+    border-color: #b45309;
+    box-shadow: 0 0 0 6px rgba(180,83,9,0.12);
+  }
   .crew__tags {
     display: flex; flex-wrap: wrap; gap: 0.4rem;
     margin: 0 0 0.65rem;
@@ -300,10 +323,25 @@
     background: rgba(47,60,108,0.08);
     border: 1px solid rgba(47,60,108,0.14);
   }
-  .tag--part {
-    color: #2a5a9e;
-    background: rgba(61,124,255,0.1);
-    border: 1px solid rgba(61,124,255,0.22);
+  .tag--hired {
+    color: #1a6b48;
+    background: rgba(31,138,91,0.1);
+    border: 1px solid rgba(31,138,91,0.28);
+  }
+  .tag--expert {
+    color: #9a3412;
+    background: rgba(180,83,9,0.1);
+    border: 1px solid rgba(180,83,9,0.28);
+  }
+  .crew__comp {
+    margin: 0.55rem 0 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  @media (min-width: 820px) {
+    .crew__item:nth-child(odd) .crew__comp { margin-left: auto; }
   }
   .crew__item p {
     margin: 0;
@@ -469,33 +507,39 @@
 
         <div class="constellation reveal" aria-hidden="true">
           <div class="constellation__core">Együtt<br />dolgozunk</div>
-          <div class="constellation__node">BA</div>
-          <div class="constellation__node">TD</div>
+          <div class="constellation__node is-hired">BA</div>
+          <div class="constellation__node is-hired">TD</div>
           <div class="constellation__node">GM</div>
           <div class="constellation__node">KB</div>
           <div class="constellation__node">BG</div>
           <div class="constellation__node">SP</div>
+          <div class="constellation__node is-expert">AM</div>
+          <div class="constellation__node is-expert">Ke</div>
           <div class="constellation__node is-later">BZ</div>
           <div class="constellation__node is-later">NM</div>
-          <div class="constellation__node is-later">AM</div>
-          <div class="constellation__node is-later">Ke</div>
         </div>
 
         <div class="crew">
-          <article class="crew__item reveal">
+          <article class="crew__item reveal is-hired">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Executive Lead</p>
             <h3>Both András</h3>
+            <div class="crew__tags">
+              <span class="tag tag--hired">Felvett</span>
+            </div>
             <p>Jövőképet ad, közös irányt teremt, és a technológiát a szervezet folyamatos fejlődésének szolgálatába állítja.</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/both-andras.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
               <a class="crew__cv" href="https://www.linkedin.com/in/both-andras/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
           </article>
-          <article class="crew__item reveal">
+          <article class="crew__item reveal is-hired">
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Chief of Staff</p>
             <h3>Temesi Dóra Anna</h3>
+            <div class="crew__tags">
+              <span class="tag tag--hired">Felvett</span>
+            </div>
             <p>Átlátja és összefogja a működést, pontosan viszi végig a feladatokat, és szükség esetén önállóan is képes vezetni és képviselni a csapatot.</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/temesi-dora-anna.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
@@ -506,7 +550,11 @@
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Engineering Transformation Architect</p>
             <h3>Guthy Miklós</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Október 15-től</span>
+            </div>
             <p>Karizmatikus technológiai vezető, aki érti a fejlesztői csapatok működését, és képes magával vinni őket a változásban.</p>
+            <p class="crew__comp">2.900.000 Ft · 3 nap / hét</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/guthy-miklos.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
               <a class="crew__cv" href="https://www.linkedin.com/in/mikl%C3%B3s-guthy/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -516,7 +564,11 @@
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Solution Architect</p>
             <h3>Kovács Bálint</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Október 15-től</span>
+            </div>
             <p>Az üzleti és felhasználói problémákból működő, megvalósítható technológiai megoldásokat tervez.</p>
+            <p class="crew__comp">2.900.000 Ft · 5 nap / hét</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/kovacs-balint.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
               <a class="crew__cv" href="https://www.linkedin.com/in/balintkov/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -526,7 +578,11 @@
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Product &amp; Discovery Architect</p>
             <h3>Biai Gergely</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Október 15-től</span>
+            </div>
             <p>Egyszemélyes hadsereg: kutat, elemez, minden fontos kérdés végére jár, és a megszerzett tudásból stratégiai irányokat és megoldásokat épít.</p>
+            <p class="crew__comp">4.000.000 Ft · 5 nap / hét</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/biai-gergely.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
               <a class="crew__cv" href="https://www.linkedin.com/in/gergelybiai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -536,10 +592,44 @@
             <span class="crew__dot" aria-hidden="true"></span>
             <p class="crew__role">Organizational Integrator</p>
             <h3>Sashalmi Péter</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Szeptember 15-től</span>
+            </div>
             <p>Összeköti a technológiai csapatot a szervezet többi részével, feloldja az elakadásokat és konfliktusokat, és működő együttműködést teremt a területek között.</p>
+            <p class="crew__comp">3.000.000 Ft · 5 nap / hét</p>
             <div class="crew__links">
               <a class="crew__cv" href="cvs/sashalmi-peter.pdf" target="_blank" rel="noopener noreferrer">CV megnyitása</a>
               <a class="crew__cv" href="https://www.linkedin.com/in/p%C3%A9ter-sashalmi-4b6a27196/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </article>
+          <article class="crew__item reveal is-expert">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Software Engineering Expert</p>
+            <h3>Andó Mihály</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Október 15-től</span>
+              <span class="tag tag--expert">Szakértői keret</span>
+            </div>
+            <p>Kíméletlen transzformátor: felfeszíti a megszokott működést, gondolkodásra készteti a fejlesztői csapatokat, és magasabbra teszi a mérnöki minőség mércéjét.</p>
+            <p class="crew__comp">2.900.000 Ft · 3 nap / hét</p>
+            <div class="crew__links">
+              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+              <a class="crew__cv" href="https://www.linkedin.com/in/mih%C3%A1ly-and%C3%B3-9a05b812b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </article>
+          <article class="crew__item reveal is-expert">
+            <span class="crew__dot" aria-hidden="true"></span>
+            <p class="crew__role">Organizational Transformation Architect</p>
+            <h3>Kulcsár Bence</h3>
+            <div class="crew__tags">
+              <span class="tag tag--later">Október 15-től</span>
+              <span class="tag tag--expert">Szakértői keret</span>
+            </div>
+            <p>Az egyik legerősebb hazai szervezeti gondolkodó, aki technológiai szervezetek átalakításában a telkótól a bankon át az államigazgatásig szerzett tapasztalatot.</p>
+            <p class="crew__comp">2.900.000 Ft · 3 nap / hét</p>
+            <div class="crew__links">
+              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
+              <a class="crew__cv" href="https://www.linkedin.com/in/kulcsarbence/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
           </article>
           <article class="crew__item reveal is-later">
@@ -568,34 +658,7 @@
               <span class="crew__cv crew__cv--none">LinkedIn nincs</span>
             </div>
           </article>
-          <article class="crew__item reveal is-later">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Software Engineering Expert</p>
-            <h3>Andó Mihály</h3>
-            <div class="crew__tags">
-              <span class="tag tag--later">Január 1-től</span>
-              <span class="tag tag--part">Részmunkaidő</span>
-            </div>
-            <p>Kíméletlen transzformátor: felfeszíti a megszokott működést, gondolkodásra készteti a fejlesztői csapatokat, és magasabbra teszi a mérnöki minőség mércéjét.</p>
-            <div class="crew__links">
-              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
-              <a class="crew__cv" href="https://www.linkedin.com/in/mih%C3%A1ly-and%C3%B3-9a05b812b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-          </article>
-          <article class="crew__item reveal is-later">
-            <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">Organizational Transformation Architect</p>
-            <h3>Kulcsár Bence</h3>
-            <div class="crew__tags">
-              <span class="tag tag--later">Január 1-től</span>
-              <span class="tag tag--part">Részmunkaidő</span>
-            </div>
-            <p>Az egyik legerősebb hazai szervezeti gondolkodó, aki technológiai szervezetek átalakításában a telkótól a bankon át az államigazgatásig szerzett tapasztalatot.</p>
-            <div class="crew__links">
-              <span class="crew__cv crew__cv--none">CV feltöltés alatt</span>
-              <a class="crew__cv" href="https://www.linkedin.com/in/kulcsarbence/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-          </article>
+        </div>
         </div>
       </div>
     </section>
