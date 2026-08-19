@@ -197,9 +197,9 @@
     border-style: dashed;
   }
   .constellation__node.is-hired {
-    border-color: #1f8a5b;
-    color: #1f8a5b;
-    box-shadow: 0 0 0 3px rgba(31,138,91,0.12), 0 8px 20px rgba(47,60,108,0.08);
+    opacity: 0.5;
+    border-color: rgba(47,60,108,0.18);
+    color: var(--mbh-soft);
   }
   .constellation__node.is-expert {
     border-color: #b45309;
@@ -292,15 +292,23 @@
     box-shadow: 0 0 0 6px rgba(139,149,168,0.12);
   }
   .crew__item.is-hired {
-    outline: 1.5px solid rgba(31,138,91,0.35);
-    outline-offset: 0.55rem;
-    border-radius: 0.4rem;
+    opacity: 0.62;
+    background: rgba(47,60,108,0.05);
+    border-radius: 0.55rem;
+    padding-top: 0.85rem;
+    padding-bottom: 1.4rem;
   }
   .crew__item.is-hired .crew__dot {
-    border-color: #1f8a5b;
-    box-shadow: 0 0 0 6px rgba(31,138,91,0.12);
+    border-color: var(--faint);
+    box-shadow: 0 0 0 6px rgba(139,149,168,0.1);
   }
-  .crew__item.is-hired h3 { color: #1a6b48; }
+  .crew__item.is-hired h3 { color: var(--mbh-soft); }
+  .crew__item.is-hired .crew__role { color: var(--faint); }
+  .crew__item.is-hired .tag--hired {
+    color: var(--mbh-soft);
+    background: rgba(47,60,108,0.06);
+    border-color: rgba(47,60,108,0.12);
+  }
   .crew__item.is-expert .crew__dot {
     border-color: #b45309;
     box-shadow: 0 0 0 6px rgba(180,83,9,0.12);
@@ -529,7 +537,7 @@
             <p class="crew__role">Executive Lead</p>
             <h3>Both András</h3>
             <div class="crew__tags">
-              <span class="tag tag--hired">Felvett</span>
+              <span class="tag tag--hired">Kész</span>
             </div>
             <p>Jövőképet ad, közös irányt teremt, és a technológiát a szervezet folyamatos fejlődésének szolgálatába állítja.</p>
             <div class="crew__links">
@@ -542,7 +550,7 @@
             <p class="crew__role">Chief of Staff</p>
             <h3>Temesi Dóra Anna</h3>
             <div class="crew__tags">
-              <span class="tag tag--hired">Felvett</span>
+              <span class="tag tag--hired">Kész</span>
             </div>
             <p>Átlátja és összefogja a működést, pontosan viszi végig a feladatokat, és szükség esetén önállóan is képes vezetni és képviselni a csapatot.</p>
             <div class="crew__links">
@@ -608,7 +616,7 @@
           </article>
           <article class="crew__item reveal">
             <span class="crew__dot" aria-hidden="true"></span>
-            <p class="crew__role">IT Infrastruktúra Architekt</p>
+            <p class="crew__role">IT Infrastructure Architect</p>
             <h3>Ikladi Ákos</h3>
             <div class="crew__tags">
               <span class="tag tag--later">Október 15-től</span>
@@ -640,7 +648,7 @@
             <h3>Andó Mihály</h3>
             <div class="crew__tags">
               <span class="tag tag--later">Október 15-től</span>
-              <span class="tag tag--expert">Szakértői keret</span>
+              <span class="tag tag--expert">Akár szakértői keret</span>
             </div>
             <p>Kíméletlen transzformátor: felfeszíti a megszokott működést, gondolkodásra készteti a fejlesztői csapatokat, és magasabbra teszi a mérnöki minőség mércéjét.</p>
             <p class="crew__comp">2.900.000 Ft · 3 nap / hét</p>
@@ -655,7 +663,7 @@
             <h3>Kulcsár Bence</h3>
             <div class="crew__tags">
               <span class="tag tag--later">Október 15-től</span>
-              <span class="tag tag--expert">Szakértői keret</span>
+              <span class="tag tag--expert">Akár szakértői keret</span>
             </div>
             <p>Az egyik legerősebb hazai szervezeti gondolkodó, aki technológiai szervezetek átalakításában a telkótól a bankon át az államigazgatásig szerzett tapasztalatot.</p>
             <p class="crew__comp">2.900.000 Ft · 3 nap / hét</p>
