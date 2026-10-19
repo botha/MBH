@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MBH — Hogyan dolgozz velem?</title>
+<meta name="description" content="Vezetői együttműködés: elvárások, működési szabályok és közös megállapodások." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --mbh: #2f3c6c;
+    --mbh-deep: #243056;
+    --mbh-soft: #4a5a8a;
+    --mbh-wash: #f3f5fb;
+    --sky: #dce5f7;
+    --ink: #1a2238;
+    --muted: #5c6780;
+    --faint: #8b95a8;
+    --line: rgba(47, 60, 108, 0.12);
+    --white: #ffffff;
+    --accent: #3d7cff;
+    --font: "Plus Jakarta Sans", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --max: 1120px;
+    --pad: clamp(1.25rem, 4vw, 3.5rem);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--white);
+    font-family: var(--font);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.95rem var(--pad);
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  }
+  .nav.is-solid {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+    box-shadow: 0 8px 30px rgba(47,60,108,0.06);
+  }
+  .nav__brand {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--mbh);
+  }
+  .nav__mark {
+    width: 1.7rem; height: 1.7rem; border-radius: 0.45rem;
+    display: grid; place-items: center; background: var(--mbh); color: #fff;
+    font-size: 0.62rem; font-weight: 800;
+  }
+  .nav__meta {
+    margin: 0; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+  }
+  .nav__links {
+    display: none; gap: 1.1rem; flex-wrap: wrap;
+    font-size: 0.82rem; font-weight: 600; color: var(--muted);
+  }
+  @media (min-width: 820px) { .nav__links { display: flex; } }
+  .nav__links a:hover { color: var(--accent); }
+
+  .hero {
+    position: relative; min-height: 72vh; min-height: 72dvh;
+    display: grid; align-content: end;
+    padding: 7.5rem var(--pad) 4rem; overflow: hidden;
+    background:
+      radial-gradient(70% 60% at 85% 15%, rgba(61,124,255,0.16), transparent 55%),
+      radial-gradient(55% 45% at 10% 80%, rgba(47,60,108,0.1), transparent 50%),
+      linear-gradient(165deg, #fff 0%, var(--mbh-wash) 45%, var(--sky) 100%);
+  }
+  .hero__grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(47,60,108,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47,60,108,0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse at 70% 30%, #000 15%, transparent 70%);
+  }
+  .hero__orb {
+    position: absolute; width: min(48vw,480px); height: min(48vw,480px);
+    right: -4%; top: 6%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle at 40% 40%, rgba(47,60,108,0.18), rgba(61,124,255,0.08) 45%, transparent 70%);
+    animation: float 16s ease-in-out infinite alternate;
+  }
+  .hero__content { position: relative; z-index: 2; max-width: 820px; }
+  .eyebrow {
+    margin: 0 0 1rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--mbh-soft);
+  }
+  .hero h1 {
+    margin: 0; font-size: clamp(2.8rem, 8vw, 5.2rem); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.05em; color: var(--mbh);
+  }
+  .hero__lede {
+    margin: 1.25rem 0 0; max-width: 42ch;
+    font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--muted); line-height: 1.55;
+  }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 2.85rem; padding: 0.7rem 1.3rem; border-radius: 999px;
+    font-size: 0.92rem; font-weight: 600;
+    transition: transform 0.3s var(--ease), background 0.3s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--solid {
+    background: var(--mbh); color: #fff;
+    box-shadow: 0 12px 28px rgba(47,60,108,0.22);
+  }
+  .btn--solid:hover { background: var(--mbh-deep); }
+
+  section { padding: clamp(3.75rem, 8vw, 6rem) var(--pad); }
+  .wrap { width: min(var(--max), 100%); margin: 0 auto; }
+  .section-label {
+    margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--mbh-soft);
+  }
+  .section-title {
+    margin: 0; font-size: clamp(1.8rem, 4.2vw, 2.8rem); font-weight: 800;
+    line-height: 1.08; letter-spacing: -0.04em; color: var(--mbh); max-width: 22ch;
+  }
+  .section-lead {
+    margin: 1rem 0 0; max-width: 52ch; font-size: 1.05rem; color: var(--muted); line-height: 1.6;
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  .agenda { background: var(--white); }
+  .agenda-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .agenda-item {
+    display: grid; gap: 0.55rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 760px) {
+    .agenda-item {
+      grid-template-columns: 5.5rem 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+  }
+  .agenda-item__time {
+    font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+  }
+  .agenda-item h3 {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    font-weight: 800; letter-spacing: -0.03em; color: var(--mbh); line-height: 1.2;
+  }
+  .agenda-item p {
+    margin: 0; max-width: 58ch;
+    font-size: 1rem; color: var(--muted); line-height: 1.55;
+  }
+
+  .ops { background: var(--mbh-wash); }
+  .ops-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .ops-item {
+    display: grid; gap: 0.45rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 760px) {
+    .ops-item {
+      grid-template-columns: 11rem 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+  .ops-item h3 {
+    margin: 0;
+    font-size: 0.95rem; font-weight: 800;
+    letter-spacing: -0.02em; color: var(--mbh);
+  }
+  .ops-item p {
+    margin: 0; max-width: 54ch;
+    font-size: 1rem; color: var(--muted); line-height: 1.5;
+  }
+
+  .lines { background: var(--white); }
+  .line-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none; counter-reset: line;
+  }
+  .line-list li {
+    position: relative;
+    counter-increment: line;
+    padding: 1.15rem 0 1.15rem 3.2rem;
+    border-top: 1px solid var(--line);
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 700; letter-spacing: -0.025em;
+    color: var(--mbh); line-height: 1.35;
+  }
+  .line-list li:last-child { border-bottom: 1px solid var(--line); }
+  .line-list li::before {
+    content: counter(line, decimal-leading-zero);
+    position: absolute; left: 0; top: 1.25rem;
+    font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 0.08em; color: var(--accent);
+  }
+
+  .qa { background: var(--mbh-wash); }
+  .qa-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none;
+    display: grid; gap: 1.75rem;
+  }
+  .qa-item h3 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 800; letter-spacing: -0.03em; color: var(--mbh); line-height: 1.25;
+  }
+  .qa-item p {
+    margin: 0; max-width: 54ch;
+    font-size: 1.02rem; color: var(--muted); line-height: 1.55;
+  }
+
+  footer {
+    padding: 1.35rem var(--pad) 1.75rem;
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    border-top: 1px solid var(--line); background: var(--white);
+    color: var(--faint); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  footer a:hover { color: var(--accent); }
+
+  @keyframes float {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-2%,3%,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .hero__orb { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+<script>
+(() => {
+  const ok = sessionStorage.getItem("mbh_gate_ok") === "1" || localStorage.getItem("mbh_gate_ok") === "1";
+  document.documentElement.classList.add(ok ? "is-unlocked" : "is-locked");
+})();
+</script>
+<link rel="stylesheet" href="../gate.css" />
+<script src="../auth.js"></script>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark">MBH</span>
+      Leader
+    </a>
+    <nav class="nav__links" aria-label="Szekciók">
+      <a href="#tematika">Tematika</a>
+      <a href="#mukodes">Működés</a>
+      <a href="#mondatok">Öt mondat</a>
+      <a href="#kerdesek">Kérdések</a>
+    </nav>
+    <p class="nav__meta">Együttműködés</p>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__orb" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">Vezetői együttműködés</p>
+        <h1>Hogyan dolgozz velem?</h1>
+        <p class="hero__lede">
+          Elvárások, működési szabályok és néhány mondat, amit érdemes megjegyezni.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#tematika">Tematika</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="agenda" id="tematika">
+      <div class="wrap">
+        <p class="section-label reveal">01 · Tematika</p>
+        <h2 class="section-title reveal">Miről beszélünk</h2>
+        <p class="section-lead reveal">
+          Rövid, fókuszált beszélgetés — hogy világos legyen, mit várunk egymástól.
+        </p>
+        <ol class="agenda-list">
+          <li class="agenda-item reveal">
+            <span class="agenda-item__time">5 perc</span>
+            <div>
+              <h3>Miben hiszek?</h3>
+              <p>Vezetői csapatként működünk, nem különálló vezetőkként. Ismernünk kell, hogy a terület mit akar, hová tart és mik a prioritásai. Bátorság, egyszerűség, együttműködés, fókuszálás és ügyfélközpontúság.</p>
+            </div>
+          </li>
+          <li class="agenda-item reveal">
+            <span class="agenda-item__time">5 perc</span>
+            <div>
+              <h3>Mit várok tőled?</h3>
+              <p>Menedzsmenttag vagy, nem csak a saját területedért felelsz. Önállóság, felelősségvállalás, őszinte kommunikáció, konstruktív vita.</p>
+            </div>
+          </li>
+          <li class="agenda-item reveal">
+            <span class="agenda-item__time">5 perc</span>
+            <div>
+              <h3>Mit várhatsz tőlem?</h3>
+              <p>Bizalom, felhatalmazás, gyors döntések, támogatás, egyenes visszajelzés. Segítek a kommunikációban, és gondoskodom róla, hogy mindenkinek világosak legyenek az irányok és a prioritások.</p>
+            </div>
+          </li>
+          <li class="agenda-item reveal">
+            <span class="agenda-item__time">10 perc</span>
+            <div>
+              <h3>Hogyan működünk együtt?</h3>
+              <p>1:1-ek, meetingek, kommunikáció, döntéshozatal, eszkaláció, visszajelzés.</p>
+            </div>
+          </li>
+          <li class="agenda-item reveal">
+            <span class="agenda-item__time">5 perc</span>
+            <div>
+              <h3>Kérdések és közös megállapodások</h3>
+              <p>Hogyan tudunk a legjobban együtt dolgozni?</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ops" id="mukodes">
+      <div class="wrap">
+        <p class="section-label reveal">02 · Technikai működés</p>
+        <h2 class="section-title reveal">Működési szabályok</h2>
+        <p class="section-lead reveal">
+          Egyszerű keretek, hogy kevesebb legyen a zaj, és több a valódi döntés.
+        </p>
+        <dl class="ops-list">
+          <div class="ops-item reveal">
+            <h3>1:1</h3>
+            <p>Kéthetente 30 perc, fix időpontban. A te időd: elakadások, fejlődés, visszajelzés. Nem státuszmeeting.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Csapatmeeting</h3>
+            <p>Heti 2 óra. Prioritások, stratégiai kérdések, döntések, függőségek és akadályok.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Ad hoc egyeztetés</h3>
+            <p>Ha 5 perc alatt megoldható, ne szervezzünk rá 30 perces meetinget.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Kommunikáció</h3>
+            <p>Sürgős: telefon. Egyszerű: chat. Összetett vagy dokumentálandó: e-mail / közös dokumentum.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Döntések</h3>
+            <p>Javaslattal érkezz. Legyen világos, miről kell dönteni, mik az opciók és mit ajánlasz.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Eszkaláció</h3>
+            <p>Problémát azonnal jelezni, ne a következő státuszon derüljön ki.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Visszajelzés</h3>
+            <p>Folyamatos, kétirányú, konkrét. Ne csak a formális értékeléseken beszéljünk róla.</p>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="lines" id="mondatok">
+      <div class="wrap">
+        <p class="section-label reveal">03 · Emelők</p>
+        <h2 class="section-title reveal">Öt mondat, amit szeretnék, ha megjegyeznétek</h2>
+        <ol class="line-list">
+          <li class="reveal">Az eredmény érdekel, nem az aktivitás.</li>
+          <li class="reveal">Merj velem vitatkozni, de érvekkel.</li>
+          <li class="reveal">A rossz hírt azonnal szeretném tudni.</li>
+          <li class="reveal">A döntéseket hozzuk meg ott, ahol a legtöbb információ van.</li>
+          <li class="reveal">Nem tudunk mindennel foglalkozni. A fókusz azt is jelenti, hogy dolgokra nemet mondunk.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="qa" id="kerdesek">
+      <div class="wrap">
+        <p class="section-label reveal">04 · Személyes</p>
+        <h2 class="section-title reveal">Négy személyes kérdés</h2>
+        <div class="qa-list">
+          <article class="qa-item reveal">
+            <h3>Mivel lehet engem az őrületbe kergetni?</h3>
+            <p>Felesleges meetingek, túlbonyolított megoldások, felelősséghárítás, „mindig így csináltuk”.</p>
+          </article>
+          <article class="qa-item reveal">
+            <h3>Mivel lehet engem azonnal megnyerni?</h3>
+            <p>Önálló kezdeményezés, egyszerű megoldások, valódi eredmények, ügyfélvisszajelzések.</p>
+          </article>
+          <article class="qa-item reveal">
+            <h3>Mit csinálj, ha nem értesz velem egyet?</h3>
+            <p>Mondd el, érvelj, vitatkozz. A jó döntés fontosabb, mint hogy nekem legyen igazam.</p>
+          </article>
+          <article class="qa-item reveal">
+            <h3>Mit csinálj, ha hibáztál vagy elakadtál?</h3>
+            <p>Szólj időben, vállald fel, és találjuk ki együtt a következő lépést.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>MBH · Leader</span>
+    <span><a href="../team/">Core Team</a></span>
+  </footer>
+
+<script>
+(() => {
+  const nav = document.getElementById("nav");
+  const reveals = document.querySelectorAll(".reveal");
+  const onScroll = () => nav.classList.toggle("is-solid", window.scrollY > 24);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+  reveals.forEach((el) => io.observe(el));
+})();
+</script>
+</body>
+</html>
