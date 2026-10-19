@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MBH — Leader</title>
+<meta name="description" content="MBH Leader" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --mbh: #2f3c6c;
+    --mbh-deep: #243056;
+    --mbh-soft: #4a5a8a;
+    --mbh-wash: #f3f5fb;
+    --sky: #dce5f7;
+    --ink: #1a2238;
+    --muted: #5c6780;
+    --faint: #8b95a8;
+    --line: rgba(47, 60, 108, 0.12);
+    --white: #ffffff;
+    --accent: #3d7cff;
+    --font: "Plus Jakarta Sans", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --max: 1120px;
+    --pad: clamp(1.25rem, 4vw, 3.5rem);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--white);
+    font-family: var(--font);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.95rem var(--pad);
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  }
+  .nav.is-solid {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+    box-shadow: 0 8px 30px rgba(47,60,108,0.06);
+  }
+  .nav__brand {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--mbh);
+  }
+  .nav__mark {
+    width: 1.7rem; height: 1.7rem; border-radius: 0.45rem;
+    display: grid; place-items: center; background: var(--mbh); color: #fff;
+    font-size: 0.62rem; font-weight: 800;
+  }
+  .nav__meta {
+    margin: 0; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+  }
+
+  .hero {
+    position: relative; min-height: 62vh; min-height: 62dvh;
+    display: grid; align-content: end;
+    padding: 7.5rem var(--pad) 3.5rem; overflow: hidden;
+    background:
+      radial-gradient(70% 60% at 85% 15%, rgba(61,124,255,0.16), transparent 55%),
+      radial-gradient(55% 45% at 10% 80%, rgba(47,60,108,0.1), transparent 50%),
+      linear-gradient(165deg, #fff 0%, var(--mbh-wash) 45%, var(--sky) 100%);
+  }
+  .hero__grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(47,60,108,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47,60,108,0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse at 70% 30%, #000 15%, transparent 70%);
+  }
+  .hero__content { position: relative; z-index: 2; max-width: 820px; }
+  .eyebrow {
+    margin: 0 0 1rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--mbh-soft);
+  }
+  .hero h1 {
+    margin: 0; font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800;
+    line-height: 0.95; letter-spacing: -0.05em; color: var(--mbh);
+  }
+  .hero__lede {
+    margin: 1.25rem 0 0; max-width: 44ch;
+    font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--muted); line-height: 1.55;
+  }
+
+  section { padding: clamp(3.5rem, 7vw, 5.5rem) var(--pad); }
+  .wrap { width: min(var(--max), 100%); margin: 0 auto; }
+  .section-label {
+    margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--mbh-soft);
+  }
+  .section-title {
+    margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800;
+    line-height: 1.1; letter-spacing: -0.04em; color: var(--mbh); max-width: 22ch;
+  }
+  .content {
+    margin-top: 1.5rem; max-width: 62ch;
+    font-size: 1.05rem; color: var(--muted); line-height: 1.6;
+  }
+  .content > *:first-child { margin-top: 0; }
+  .content h2 {
+    margin: 2rem 0 0.7rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+    font-weight: 800; letter-spacing: -0.03em; color: var(--mbh);
+  }
+  .content p { margin: 0.75rem 0 0; }
+  .content ul { margin: 0.75rem 0 0; padding-left: 1.15rem; }
+  .content li { margin: 0.35rem 0; }
+
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  footer {
+    padding: 1.35rem var(--pad) 1.75rem;
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    border-top: 1px solid var(--line); background: var(--white);
+    color: var(--faint); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none !important; opacity: 1; transform: none; }
+  }
+</style>
+<script>
+(() => {
+  const ok = sessionStorage.getItem("mbh_gate_ok") === "1" || localStorage.getItem("mbh_gate_ok") === "1";
+  document.documentElement.classList.add(ok ? "is-unlocked" : "is-locked");
+})();
+</script>
+<link rel="stylesheet" href="../gate.css" />
+<script src="../auth.js"></script>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark">MBH</span>
+      Leader
+    </a>
+    <p class="nav__meta">MBH</p>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">MBH</p>
+        <h1>Leader</h1>
+        <p class="hero__lede" id="hero-lede">A tartalom hamarosan érkezik.</p>
+      </div>
+    </section>
+
+    <section class="wrap" id="tartalom">
+      <p class="section-label reveal">Tartalom</p>
+      <h2 class="section-title reveal">Leader</h2>
+      <div class="content reveal" id="leader-content">
+        <p>Várjuk a tartalmat.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>MBH · Leader</span>
+    <span><a href="../team/">Core Team</a></span>
+  </footer>
+
+<script>
+(() => {
+  const nav = document.getElementById("nav");
+  const reveals = document.querySelectorAll(".reveal");
+  const onScroll = () => nav.classList.toggle("is-solid", window.scrollY > 24);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
+  );
+  reveals.forEach((el) => io.observe(el));
+})();
+</script>
+</body>
+</html>
