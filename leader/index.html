@@ -173,7 +173,25 @@
     font-size: 1rem; color: var(--muted); line-height: 1.55;
   }
 
-  .ops { background: var(--mbh-wash); }
+  .values { background: var(--mbh-wash); }
+  .values-list {
+    margin: 2.25rem 0 0; padding: 0; list-style: none;
+    display: grid; gap: 0; border-top: 1px solid var(--line);
+  }
+  .values-list li {
+    display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem;
+    align-items: baseline; padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .values-list span {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent);
+  }
+  .values-list p {
+    margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.55rem); font-weight: 800;
+    letter-spacing: -0.03em; color: var(--mbh); line-height: 1.2;
+  }
+
+  .ops { background: var(--white); }
   .ops-list {
     margin: 2.25rem 0 0; padding: 0; list-style: none;
     border-top: 1px solid var(--line);
@@ -200,7 +218,7 @@
     font-size: 1rem; color: var(--muted); line-height: 1.5;
   }
 
-  .lines { background: var(--white); }
+  .lines { background: var(--mbh-wash); }
   .line-list {
     margin: 2.25rem 0 0; padding: 0; list-style: none; counter-reset: line;
   }
@@ -221,7 +239,7 @@
     letter-spacing: 0.08em; color: var(--accent);
   }
 
-  .qa { background: var(--mbh-wash); }
+  .qa { background: var(--white); }
   .qa-list {
     margin: 2.25rem 0 0; padding: 0; list-style: none;
     display: grid; gap: 1.75rem;
@@ -271,6 +289,7 @@
     </a>
     <nav class="nav__links" aria-label="Szekciók">
       <a href="#tematika">Tematika</a>
+      <a href="#ertekek">Értékek</a>
       <a href="#mukodes">Működés</a>
       <a href="#mondatok">Öt mondat</a>
       <a href="#kerdesek">Kérdések</a>
@@ -306,14 +325,14 @@
             <span class="agenda-item__time">01</span>
             <div>
               <h3>Miben hiszek?</h3>
-              <p>Vezetői csapatként működünk, nem különálló vezetőkként. Ismernünk kell, hogy a terület mit akar, hová tart és mik a prioritásai. Bátorság, egyszerűség, együttműködés, fókuszálás és ügyfélközpontúság.</p>
+              <p>Vezetői csapatként működünk, nem különálló vezetőkként. Ismernünk kell, hogy a terület mit akar, hová tart és mik a prioritásai. Fókuszálás és ügyfélközpontúság.</p>
             </div>
           </li>
           <li class="agenda-item reveal">
             <span class="agenda-item__time">02</span>
             <div>
               <h3>Mit várok tőled?</h3>
-              <p>Menedzsmenttag vagy, nem csak a saját területedért felelsz. Önállóság, felelősségvállalás, őszinte kommunikáció, konstruktív vita.</p>
+              <p>Menedzsmenttag vagy, nem csak a saját területedért felelsz — van saját területed, tudsz dönteni. Önállóság, felelősségvállalás, őszinte kommunikáció, konstruktív vita.</p>
             </div>
           </li>
           <li class="agenda-item reveal">
@@ -341,9 +360,25 @@
       </div>
     </section>
 
+
+    <section class="values" id="ertekek">
+      <div class="wrap">
+        <p class="section-label reveal">02 · Értékek</p>
+        <h2 class="section-title reveal">Amire építünk</h2>
+        <p class="section-lead reveal">
+          Három iránytű a mindennapi döntésekhez.
+        </p>
+        <ul class="values-list">
+          <li class="reveal"><span>01</span><p>Bátorság</p></li>
+          <li class="reveal"><span>02</span><p>Egyszerűsítés</p></li>
+          <li class="reveal"><span>03</span><p>Együttműködés</p></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="ops" id="mukodes">
       <div class="wrap">
-        <p class="section-label reveal">02 · Technikai működés</p>
+        <p class="section-label reveal">03 · Technikai működés</p>
         <h2 class="section-title reveal">Működési szabályok</h2>
         <p class="section-lead reveal">
           Egyszerű keretek, hogy kevesebb legyen a zaj, és több a valódi döntés.
@@ -355,15 +390,15 @@
           </div>
           <div class="ops-item reveal">
             <h3>Csapatmeeting</h3>
-            <p>Heti 2 óra. Prioritások, stratégiai kérdések, döntések, függőségek és akadályok.</p>
+            <p>Heti 2 óra: 1 óra operatív, 1 óra stratégia. Prioritások, döntések, függőségek és akadályok.</p>
+          </div>
+          <div class="ops-item reveal">
+            <h3>Kommunikáció</h3>
+            <p>Először keresd mindig Dórát — fog segíteni. Sürgős: telefon. Egyszerű: chat. Összetett vagy dokumentálandó: e-mail / közös dokumentum.</p>
           </div>
           <div class="ops-item reveal">
             <h3>Ad hoc egyeztetés</h3>
             <p>Ha 5 perc alatt megoldható, ne szervezzünk rá 30 perces meetinget.</p>
-          </div>
-          <div class="ops-item reveal">
-            <h3>Kommunikáció</h3>
-            <p>Sürgős: telefon. Egyszerű: chat. Összetett vagy dokumentálandó: e-mail / közös dokumentum.</p>
           </div>
           <div class="ops-item reveal">
             <h3>Döntések</h3>
@@ -383,7 +418,7 @@
 
     <section class="lines" id="mondatok">
       <div class="wrap">
-        <p class="section-label reveal">03 · Emelők</p>
+        <p class="section-label reveal">04 · Emelők</p>
         <h2 class="section-title reveal">Öt mondat, amit szeretnék, ha megjegyeznétek</h2>
         <ol class="line-list">
           <li class="reveal">Az eredmény érdekel, nem az aktivitás.</li>
@@ -397,7 +432,7 @@
 
     <section class="qa" id="kerdesek">
       <div class="wrap">
-        <p class="section-label reveal">04 · Személyes</p>
+        <p class="section-label reveal">05 · Személyes</p>
         <h2 class="section-title reveal">Négy személyes kérdés</h2>
         <div class="qa-list">
           <article class="qa-item reveal">
